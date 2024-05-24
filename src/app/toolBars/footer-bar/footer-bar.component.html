@@ -1,0 +1,46 @@
+<p-toolbar
+  styleClass="shadow-4"
+  [style]="{'display': 'flex', 'justify-content': 'center', 'background-color': '#2d2d2d', 'border': 0 }">
+  <div class="grid footer flex justify-content-between font-bold text-xl text-0">
+    <div class="xl:col-4">
+      <div>
+        <h1 class="text-green-500">Меню</h1>
+      </div>
+      <div class="flex">
+        <ul class="list-disc m-0">
+          <li><a class="text-0 py-1 underline-hover-top-bar" routerLink="/gym-VitGTK">Главная</a></li>
+          <li><a class="text-0 py-1 underline-hover-top-bar" routerLink="/aboutUs">О нас</a></li>
+          <li><a class="text-0 py-1 underline-hover-top-bar" routerLink="#">Тренеры</a></li>
+        </ul>
+        <ul class="list-disc m-0">
+          <li><a class="text-0 py-1 underline-hover-top-bar" routerLink="/gym-VitGTK">График</a></li>
+          <li><a class="text-0 py-1 underline-hover-top-bar" routerLink="#">Цены</a></li>
+          <li><a class="text-0 py-1 underline-hover-top-bar" routerLink="#">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="xl:col-4">
+      <div>
+        <h1 class="text-green-500">Спонсоры</h1>
+      </div>
+      <div class="grid flex justify-content-around align-items-center">
+        <div class="col-3">
+          <a href="https://vitgtk.belstu.by/pool/">
+            <p-image src="assets/cropped-180-1.png" width="100"></p-image>
+          </a>
+        </div>
+        <div class="col-7 col-offset-1">
+          <p>Филиал учреждения образования «Белорусский государственный технологический университет» «Витебский государственный технологический колледж»</p>
+        </div>
+      </div>
+    </div>
+    <div class="xl:col-4">
+      <div>
+        <h1 class="text-green-500">Разработчик</h1>
+      </div>
+      <div>
+        <p>В процессе выполнения: <span class="text-green-500">Ковалёв Н. С.</span></p>
+      </div>
+    </div>
+  </div>
+</p-toolbar>

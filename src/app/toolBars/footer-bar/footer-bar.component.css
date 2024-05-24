@@ -1,0 +1,29 @@
+.underline-hover-top-bar {
+  position: relative;
+  color: #00a650; /*задаём цвет ссылки*/
+  cursor: pointer;
+  line-height: 3; /*задаём высоту строки*/
+  text-decoration: none; /*убираем подчёркивание*/
+}
+
+.underline-hover-top-bar:after {
+  display: block;
+  position: absolute;
+  left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  width: 0;/*задаём длинну линии до наведения курсора*/
+  height: 3px; /*задаём ширину линии*/
+  background-color: #00a650; /*задаём цвет линии*/
+  content: "";
+  transition: width 0.3s ease-out; /*задаём время анимации*/
+}
+
+.underline-hover-top-bar:hover:after,
+.underline-hover-top-bar:focus:after {
+  width: 100%;
+}
+
+.flex-flow-footer {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}

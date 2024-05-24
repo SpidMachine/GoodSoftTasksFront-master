@@ -1,0 +1,90 @@
+<div class="justify-content-center">
+  <div>
+    <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="main-container animation-duration-1000">
+      <div>
+        <h1 class="uppercase text-0 flex justify-content-center m-8 lg:text-7xl sm:text-xl"><i
+          class="pi pi-minus pi-angles-gym-h1"
+          style=""></i><span class="text-green-500">Тренажерный</span>
+          зал<i class="pi pi-minus pi-angles-gym-h1"
+                style="padding: 0 5%"></i></h1>
+      </div>
+      <p-carousel
+        [value]="products"
+        [numVisible]="2"
+        [numScroll]="1"
+        [circular]="false"
+        [responsiveOptions]="responsiveOptions"
+        [autoplayInterval]="4000"
+      >
+        <ng-template let-product pTemplate="item">
+          <div class="mb-3" style="width:100%">
+            <div class="mx-2 flex justify-content-center">
+              <p-image
+                src="assets/gym-photo/completed-carousel/{{ product.image }}"
+                class="border-round"
+                width="700"/>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+    <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="bg-repeat surface-800 animation-duration-1000"
+         style="background-image: url('assets/Без названия(2).png'); background-attachment: fixed; box-shadow: inset 0 3px 10px black, inset 0 -3px 10px black">
+      <div class="main-container">
+        <div>
+          <h1 class="uppercase text-0 flex lg:text-7xl sm:text-xl pt-8">
+            <i class="pi pi-minus pi-angles-gym-h1"></i>
+            Ваш<span class="text-green-500">клуб</span>
+          </h1>
+          <hr class="mx-8">
+          <div class="grid text-0 my-8 py-6">
+            <div class="col-6 md:col-4 lg:col-6">
+              <img src="assets/gym-photo/atom-target-1-2fc0bcf2.jpg" class="w-30rem shadow-8 border-3 border-white" alt="photo">
+            </div>
+            <div class="col-6 md:col-6 lg:col-6">
+              <h1 class="text-5xl text-justify text-green-500">ДОСТИГАЙТЕ СВОИХ ЦЕЛЕЙ
+                ВМЕСТЕ С НАМИ</h1>
+              <hr>
+              <p class="text-xl text-justify"><span class="font-bold text-1xl">ВитГТК тренажерный зал </span> — это один
+                из лучших залов для занятия спортом. Это просторные тренажерные
+                залы, множество направлений фитнеса, тренировки для новичков
+                и
+                для профессиональных спортсменов. Это система автоматизации, мощная система вентиляции и
+                кондиционирования
+                с
+                контролем углекислого газа, четырехступенчатая система фильтрации питьевой воды, чистые и комфортные
+                раздевалки и душевые. И, конечно, опытные тренерский состав</p>
+              <a href="#">
+                <p-button label="Узнать больше" [raised]="true" severity="success"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="main-container animation-duration-1000">
+    <div class="text-0">
+      <h1 class="uppercase">Время работы</h1>
+      <hr>
+      <table class="p-datatable-gridlines text-2xl font-bold">
+        <tr>
+          <td>Пн. – Чт.</td>
+          <td>8.00 - 21.00</td>
+        </tr>
+        <tr>
+          <td>Пятница</td>
+          <td>8.00 - 20.00</td>
+        </tr>
+        <tr>
+          <td>Суббота</td>
+          <td>10.00 – 20.00</td>
+        </tr>
+        <tr>
+          <td>Воскресенье</td>
+          <td>10.00 – 19.00</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+body {
+  margin: 0;
+  background-color: #3b3b3b;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer{
+  @media (max-width: 1000px) {
+    margin: 0;
+  }
+
+  @media (min-width: 1000px) {
+    margin: 0 15%;
+  }
+}
+
+.main-container {
+
+  @media (max-width: 450px) {
+    margin: 0;
+  }
+
+  @media (min-width: 450px) {
+    margin: 0 20%;
+  }
+}
+
+.card-contacts {
+  @media (max-width: 450px) {
+    width: 100%;
+    margin: 0 5%;
+  }
+}
+
+p, h1, h2, h3, h4, span, ul, li {
+  text-shadow: 1px 1px 2px black
+}
