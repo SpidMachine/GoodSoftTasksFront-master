@@ -1,0 +1,52 @@
+<div>
+  <a routerLink="/admin" class="flex justify-content-center">
+    <button class="btn">Вернуться к списку пользователей</button>
+  </a>
+</div>
+<div class="flex justify-content-center my-8">
+  <form class="form" [formGroup]="createUserForm">
+    <p class="title">Создать нового пользователя</p>
+    <p class="message">Добавить пользователя в базу данных</p>
+    <div class="flex">
+      <label>
+        <input formControlName="firstName" name="firstname" required placeholder="" type="text" class="input">
+        <span>Имя</span>
+      </label>
+
+      <label>
+        <input formControlName="lastName" name="lastName" required="" placeholder="" type="text" class="input">
+        <span>Фамилия</span>
+      </label>
+    </div>
+
+    <label>
+      <input formControlName="password" name="password" required="" placeholder="" type="password" class="input">
+      <span>Пароль</span>
+    </label>
+
+    <label>
+      <input formControlName="email" name="email" required="" placeholder="" type="email" class="input">
+      <span>Почта</span>
+    </label>
+
+    <label>
+      <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input">
+      <span>День рождения</span>
+    </label>
+
+    <label>
+      <select formControlName="gender" required name="gender" class="input">
+        <option selected>Мужской</option>
+        <option>Женский</option>
+      </select>
+      <span>Пол</span>
+    </label>
+
+    <label>
+      <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text" class="input">
+      <span>Номер телефона</span>
+    </label>
+
+    <button class="submit cursor-pointer" (click)="onSubmit()">Создать пользователя</button>
+  </form>
+</div>

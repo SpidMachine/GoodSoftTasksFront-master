@@ -1,90 +1,365 @@
 <div class="justify-content-center">
-  <div>
-    <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="main-container animation-duration-1000">
-      <div>
-        <h1 class="uppercase text-0 flex justify-content-center m-8 lg:text-7xl sm:text-xl"><i
-          class="pi pi-minus pi-angles-gym-h1"
-          style=""></i><span class="text-green-500">Тренажерный</span>
-          зал<i class="pi pi-minus pi-angles-gym-h1"
-                style="padding: 0 5%"></i></h1>
+  <div class="bgPhoto-FirstFocus"
+       style="background-image: url('assets/gym-photo/carousel/ganteli-trenazhernyy-zal.jpg')">
+    <div class="main-container h-full">
+      <div class="flex flex-column justify-content-center h-full">
+        <div>
+          <ul class="firstFocus-ul text-0 text-xl list-none">
+            <li class="line-height-1">
+              <span class="bg-FirstFocusFonts text-red-500">ТРЕНАЖЕРНЫЙ ЗАЛ</span><br>
+              <span class="bg-FirstFocusFonts text-green-500">ВитГТК</span>
+            </li>
+            <li></li>
+            <li>ВСЕ ДЛЯ ЭФФЕКТИВНЫХ ТРЕНИРОВОК</li>
+            <li>САМОСТОЯТЕЛЬНО ИЛИ С ПЕРСОНАЛЬНЫМ ТРЕНЕРОМ</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="flex firstFocus-btn gap-4">
+            <li>
+              <button class="uppercase shadow-8">Стать членом клуба</button>
+            </li>
+            <li>
+              <button class="uppercase shadow-8">График работы</button>
+            </li>
+          </ul>
+        </div>
       </div>
-      <p-carousel
-        [value]="products"
-        [numVisible]="2"
-        [numScroll]="1"
-        [circular]="false"
-        [responsiveOptions]="responsiveOptions"
-        [autoplayInterval]="4000"
-      >
-        <ng-template let-product pTemplate="item">
-          <div class="mb-3" style="width:100%">
-            <div class="mx-2 flex justify-content-center">
+    </div>
+  </div>
+  <div class="container pb-8">
+    <div class="main-container">
+      <div class="secondBlock-mainPage bg-white grid">
+        <div class="fPart-text col-7">
+          <p class="text-2xl"><span class="font-bold">В ТРЕНАЖЕРНОМ ЗАЛЕ ВитГТК В ВИТЕБСКЕ МЫ ПРЕДЛАГАЕМ ТОЛЬКО ЛУЧШЕЕ И ИННОВАЦИОННОЕ ФИТНЕС-ОБОРУДОВАНИЕ</span>
+            ДЛЯ
+            ВАШИХ КАРДИО, СИЛОВЫХ И ФУНКЦИОНАЛЬНЫХ ТРЕНИРОВОК, ЧТОБЫ ВЫ МОГЛИ ЭФФЕКТИВНО ЗАНИМАТЬСЯ В ЗАВИСИМОСТИ ОТ
+            ВАШИХ ЦЕЛЕЙ И ЗАДАЧ.</p>
+          <p style="border-left: 5px solid red; padding-left: 5%">
+            В НАШЕМ ТРЕНАЖЕРНОМ ЗАЛЕ ЕСТЬ ВСЕ, ЧТОБЫ ЗАНИМАТЬСЯ СПОРТОМ - ОТ СОВРЕМЕННЫХ БЕГОВЫХ ДОРОЖЕК,
+            ЭЛЛИПТИЧЕСКИХ
+            ТРЕНАЖЕРОВ И ВЕЛОСИПЕДОВ ВЕДУЩИХ БРЕНДОВ, ЧТОБЫ ВЫ МОГЛИ ПРИЙТИ В ЛУЧШУЮ ФОРМУ
+          </p>
+        </div>
+        <div class="col-5 flex align-items-center justify-content-center">
+          <p-image
+            src="assets/gym-photo/carousel/trenazhernyj_zal_diski_ves_118105_1920x1080.jpg"
+            alt="Image"
+            width="350px"
+            [preview]="true"/>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="grid">
+        <div class="col-4">
+          <div class="flex align-items-center text-0 gap-3 mb-5">
+            <img class="w-2" src="assets/logosWorkouts/Group_2247.png" alt="">
+            <p class="uppercase text-2xl">Велотренжеры</p>
+          </div>
+          <div class="flex align-items-center text-0 gap-3 mb-5">
+            <img class="w-2" src="assets/logosWorkouts/Group_2469.png" alt="">
+            <p class="uppercase text-2xl">Эллипсы</p>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flex align-items-center text-0 gap-3 mb-5">
+            <img class="w-2" src="assets/logosWorkouts/Group_2461.png" alt="">
+            <p class="uppercase text-2xl">Зоны групповы тренеровок</p>
+          </div>
+          <div class="flex align-items-center text-0 gap-3 mb-5">
+            <img class="w-2" src="assets/logosWorkouts/Group_2464.png" alt="">
+            <p class="uppercase text-2xl">Гребные тренажеры</p>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flex align-items-center text-0 gap-3 mb-5">
+            <img class="w-2" src="assets/logosWorkouts/Group_2463.png" alt="">
+            <p class="uppercase text-2xl">Беговые дорожки</p>
+          </div>
+          <div class="flex align-items-center text-0 gap-3">
+            <img class="w-2" src="assets/logosWorkouts/Group_2465.png" alt="">
+            <p class="uppercase text-2xl">Силовые тренажеры</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="thirdBlock-mainPage bg-red grid p-0">
+      <div class="fPart-text shBlock col-7 flex flex-column justify-content-around">
+        <div>
+          <i class="uppercase font-light text-7xl">Пробная тренеровка</i>
+          <p class="text-2xl">
+            Отличная возможность познакомится с тренажерным залом и тренерами Тренажерного зала ВитГТК:
+          </p>
+        </div>
+        <div class="firstFocus-btn">
+          <button class="uppercase shadow-8 bg-black-alpha-90 border-1">Выбрать дату</button>
+        </div>
+      </div>
+      <div class="col-5 flex align-items-center justify-content-center p-0">
+        <img class="imgThirdFocus" src="assets/photo_2_1_1.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="grid">
+      <div class="col-6">
+        <div class="line-height-1">
+          <i class="uppercase text-7xl">Тренажерный зал</i><br>
+          <i class="uppercase text-red-600 text-7xl">колледжа ВитГТК</i>
+        </div>
+        <div>
+          <p class="text-xl line-height-3">НЕ СТОИТ ЗАБЫВАТЬ, ЧТО ПОМИМО РАБОТЫ В ТРЕНАЖЕРНОМ ЗАЛЕ МОЖНО И НУЖНО
+            ПОСЕЩАТЬ ГРУППОВЫЕ
+            ЗАНЯТИЯ В
+            ФИТНЕС-КЛУБЕ, КОТОРЫЕ РАЗНООБРАЗЯТ ВАШУ ПРОГРАММУ ТРЕНИРОВОК, ПОМОГУТ РЕШИТЬ ОПРЕДЕЛЕННЫЕ ЗАДАЧИ, БУДЬ ТО
+            СНИЖЕНИЕ ВЕСА, УВЕЛИЧЕНИЕ СИЛЫ ИЛИ ПОВЫШЕНИЕ ВЫНОСЛИВОСТИ.</p>
+          <p style="border-left: 5px solid red; padding-left: 5%" class="line-height-3">
+            ВСЕ ПРОГРАММЫ ГРУППОВЫХ ТРЕНИРОВОК РАЗРАБОТАНЫ ЭКСПЕРТАМИ UFC GYM В США НА ОСНОВЕ ТРЕНИРОВОК БОЙЦОВ UFC И
+            АДАПТИРОВАНЫ ДЛЯ НЕ ПРОФЕССИОНАЛЬНЫХ АТЛЕТОВ. ДЛЯ ЛЮБИТЕЛЕЙ ЕДИНОБОРСТВ В ФИТНЕС-КЛУБАХ UFC GYM ПРОХОДЯТ
+            ГРУППОВЫЕ ТРЕНИРОВКИ ПО БОКСУ, ДЖИУ ДЖИТСУ, КИКБОКСИНГУ ИЛИ ПОПУЛЯРНОМУ ВО ВСЕМ МИРЕ ММА. ОТДЕЛЬНЫЕ
+            ПРОГРАММЫ ГРУППОВЫХ ТРЕНИРОВОК ПРОВОДЯТСЯ СПЕЦИАЛЬНО ДЛЯ ДЕВУШЕК: БОКС И ДЖИУ ДЖИТСУ
+          </p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="grid h-full">
+          <div class="col-6 flex flex-column justify-content-between">
+            <div>
               <p-image
-                src="assets/gym-photo/completed-carousel/{{ product.image }}"
-                class="border-round"
-                width="700"/>
+                width="370px"
+                height="250px"
+                [preview]="true"
+                src="assets/gym-photo/carousel/6307b43b03b7b844244730.jpg"
+              >
+              </p-image>
+            </div>
+            <div>
+              <p-image
+                width="370px"
+                height="250px"
+                [preview]="true"
+                src="assets/gym-photo/carousel/Fitness-girl-tattoo-hall-sport_1920x1080.jpg"
+              >
+              </p-image>
             </div>
           </div>
-        </ng-template>
-      </p-carousel>
-    </div>
-    <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="bg-repeat surface-800 animation-duration-1000"
-         style="background-image: url('assets/Без названия(2).png'); background-attachment: fixed; box-shadow: inset 0 3px 10px black, inset 0 -3px 10px black">
-      <div class="main-container">
-        <div>
-          <h1 class="uppercase text-0 flex lg:text-7xl sm:text-xl pt-8">
-            <i class="pi pi-minus pi-angles-gym-h1"></i>
-            Ваш<span class="text-green-500">клуб</span>
-          </h1>
-          <hr class="mx-8">
-          <div class="grid text-0 my-8 py-6">
-            <div class="col-6 md:col-4 lg:col-6">
-              <img src="assets/gym-photo/atom-target-1-2fc0bcf2.jpg" class="w-30rem shadow-8 border-3 border-white" alt="photo">
-            </div>
-            <div class="col-6 md:col-6 lg:col-6">
-              <h1 class="text-5xl text-justify text-green-500">ДОСТИГАЙТЕ СВОИХ ЦЕЛЕЙ
-                ВМЕСТЕ С НАМИ</h1>
-              <hr>
-              <p class="text-xl text-justify"><span class="font-bold text-1xl">ВитГТК тренажерный зал </span> — это один
-                из лучших залов для занятия спортом. Это просторные тренажерные
-                залы, множество направлений фитнеса, тренировки для новичков
-                и
-                для профессиональных спортсменов. Это система автоматизации, мощная система вентиляции и
-                кондиционирования
-                с
-                контролем углекислого газа, четырехступенчатая система фильтрации питьевой воды, чистые и комфортные
-                раздевалки и душевые. И, конечно, опытные тренерский состав</p>
-              <a href="#">
-                <p-button label="Узнать больше" [raised]="true" severity="success"/>
-              </a>
+          <div class="col-6">
+            <div>
+              <p-image
+                width="370px"
+                height="520px"
+                [style]=""
+                [preview]="true"
+                src="assets/gym-photo/image5.jpg"
+              >
+              </p-image>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="main-container animation-duration-1000">
-    <div class="text-0">
-      <h1 class="uppercase">Время работы</h1>
-      <hr>
-      <table class="p-datatable-gridlines text-2xl font-bold">
-        <tr>
-          <td>Пн. – Чт.</td>
-          <td>8.00 - 21.00</td>
-        </tr>
-        <tr>
-          <td>Пятница</td>
-          <td>8.00 - 20.00</td>
-        </tr>
-        <tr>
-          <td>Суббота</td>
-          <td>10.00 – 20.00</td>
-        </tr>
-        <tr>
-          <td>Воскресенье</td>
-          <td>10.00 – 19.00</td>
-        </tr>
-      </table>
+  <div class="main-container mt-8 surface-50">
+    <div class="p-5">
+      <i class="uppercase text-7xl">Галерея</i><br>
+    </div>
+    <div class="grid">
+      <div class="col-3">
+        <p-image
+          width="370px"
+          height="520px"
+          [style]=""
+          [preview]="true"
+          src="assets/gym-photo/image5.jpg"
+        >
+        </p-image>
+      </div>
+      <div class="col-9">
+        <div class="grid flex justify-content-between">
+          <div class="col-3">
+            <p-image
+              width="320px"
+              height="250px"
+              [style]=""
+              [preview]="true"
+              src="assets/gallery/24391200d4e4f567202b99998091ccc0.jpeg"
+            >
+            </p-image>
+          </div>
+          <div class="col-4">
+            <p-image
+              width="400px"
+              height="250px"
+              [style]=""
+              [preview]="true"
+              src="assets/gallery/ab3e4298936e152f92a5ecdb2ca2371f.jpeg"
+            >
+            </p-image>
+          </div>
+          <div class="col-4">
+            <p-image
+              width="355px"
+              height="250px"
+              [style]=""
+              [preview]="true"
+              src="assets/gallery/ncrwy164yfgbg.jpg"
+            >
+            </p-image>
+          </div>
+          <div class="col-4">
+            <p-image
+              width="355px"
+              height="250px"
+              [style]=""
+              [preview]="true"
+              src="assets/gallery/oiob-vs9kzv_snzhsfb9sddvpwcvtfzcdkqtbeojiu2xrfwazdihjx2cx8bl0idkwemegpzpezeag2_xdl4ltie2.webp"
+            >
+            </p-image>
+          </div>
+          <div class="col-4">
+            <p-image
+              width="350px"
+              height="250px"
+              [style]=""
+              [preview]="true"
+              src="assets/gallery/TRN-03.jpg"
+            >
+            </p-image>
+          </div>
+          <div class="col-4">
+            <p-image
+              width="345px"
+              height="250px"
+              [style]=""
+              [preview]="true"
+              src="assets/gallery/15br.jpg"
+            >
+            </p-image>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div pAnimateOnScroll enterClass="fadein" leaveClass="fadeout"
+       class="bg-manyLogo bg-repeat surface-800 animation-duration-1000"
+       style="background-image: url('assets/Без названия(2).png')">
+    <div class="main-container">
+      <div>
+        <h1 class="uppercase text-0 flex lg:text-7xl sm:text-xl pt-8">
+          <i class="pi pi-minus text-green-500 pi-angles-gym-h1"></i>
+          <i>Ваш <i class="text-green-500">клуб</i></i>
+        </h1>
+        <hr class="mx-8">
+        <div class="grid text-0 py-6 align-items-center">
+          <div class="col-6 md:col-4 lg:col-6">
+            <p-image
+              width="740px"
+              height="350px"
+              [style]=""
+              [preview]="true"
+              src="assets/gym-photo/atom-club-about-bg-4582444a.webp"
+            >
+            </p-image>
+          </div>
+          <div class="col-6 md:col-6 lg:col-6">
+            <h1 class="text-5xl text-justify text-green-500">ДОСТИГАЙТЕ СВОИХ ЦЕЛЕЙ
+              ВМЕСТЕ С НАМИ</h1>
+            <hr>
+            <p class="text-xl text-justify"><span class="font-bold text-1xl">ВитГТК тренажерный зал </span> — это один
+              из лучших залов для занятия спортом. Это просторные тренажерные
+              залы, множество направлений фитнеса, тренировки для новичков
+              и
+              для профессиональных спортсменов. Это система автоматизации, мощная система вентиляции и
+              кондиционирования
+              с
+              контролем углекислого газа, четырехступенчатая система фильтрации питьевой воды, чистые и комфортные
+              раздевалки и душевые. И, конечно, опытные тренерский состав</p>
+            <a href="#">
+              <p-button label="Узнать больше" [raised]="true" severity="success"/>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<div class="main-container" style="height: 0">
+  <div class="gMapBlock z-1 bg-white pt-5" style="border-top: 6px solid red">
+    <i class="pl-2 text-red-500 shBlock text-3xl">Тренажерный зал</i>
+    <div class="fPart-text grid flex justify-content-around">
+      <div class="col-4">
+        <div class="surface-100 p-1 flex align-items-center gap-3">
+          <i class="pi pi-map-marker text-red-500 text-3xl"></i>
+          <span class="uppercase font-light text-2xl">Адрес</span>
+        </div>
+        <span class="">
+          улица Гагарина 41, Витебск, Витебская область 210017
+        </span>
+      </div>
+      <div class="col-6">
+        <div class="surface-100 p-1 flex align-items-center gap-3">
+          <i class="pi pi-calendar-clock text-red-500 text-3xl"></i>
+          <span class="uppercase font-light text-2xl">График</span>
+        </div>
+        <table class="tb-gMap">
+          <tr>
+            <td class="">Пн. – Чт.</td>
+            <td>16:15-18:30</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <i class="pl-2 pt-5 text-red-500 shBlock text-3xl">Бассейн</i>
+    <div class="fPart-text grid flex justify-content-around gap-3">
+      <div class="col-4">
+        <div class="surface-100 p-1 flex align-items-center gap-3">
+          <i class="pi pi-map-marker text-red-500 text-3xl"></i>
+          <span class="uppercase font-light text-2xl">Адрес</span>
+        </div>
+        <span class="">
+          улица Гагарина 41, Витебск, Витебская область 210017
+        </span>
+      </div>
+      <div class="col-6">
+        <div class="surface-100 p-1 flex align-items-center gap-3">
+          <i class="pi pi-calendar-clock text-red-500 text-3xl"></i>
+          <span class="uppercase font-light text-2xl">пн-чт</span>
+        </div>
+        <table class="tb-gMap">
+          <tr>
+            <td>Пн. – Чт.</td>
+            <td>8.00 - 21.00</td>
+          </tr>
+          <tr>
+            <td>Пятница</td>
+            <td>8.00 - 20.00</td>
+          </tr>
+          <tr>
+            <td>Суббота</td>
+            <td>10.00 – 20.00</td>
+          </tr>
+          <tr>
+            <td>Воскресенье</td>
+            <td>10.00 – 19.00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="flex align-items-center gap-3">
+        <i class="pi pi-envelope text-red-500 text-2xl p-1"></i>E-mail: vitgtk&#64;belstu.by
+      </div>
+      <div class="flex align-items-center gap-3">
+        <i class="pi pi-phone text-red-500 text-2xl p-1"></i>
+        <div class="block">
+          <span>Тел.: 8(0212)36-17-07</span><br>
+          <span>Факс: 36-17-08</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-g-maps></app-g-maps>

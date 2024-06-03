@@ -14,10 +14,17 @@
   height: 3px; /*задаём ширину линии*/
   background-color: #00a650; /*задаём цвет линии*/
   content: "";
-  transition: width 0.3s ease-out; /*задаём время анимации*/
+  transition: width 0.1s ease-out; /*задаём время анимации*/
 }
 
 .underline-hover-top-bar:hover:after,
 .underline-hover-top-bar:focus:after {
   width: 100%;
+}
+
+p-toolbar {
+  z-index: 10;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }

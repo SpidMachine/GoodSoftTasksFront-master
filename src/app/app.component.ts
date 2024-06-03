@@ -6,8 +6,10 @@ import {FormsModule} from "@angular/forms";
 import {TopBarComponent} from "./toolBars/top-bar/top-bar.component";
 import {MainContainerComponent} from "./main-container/main-container.component";
 import {FooterBarComponent} from "./toolBars/footer-bar/footer-bar.component";
-import { GoogleMapsModule } from '@angular/google-maps';
-import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+import {GoogleMapsModule} from '@angular/google-maps';
+import {AnimateOnScrollModule} from 'primeng/animateonscroll';
+import {UserService} from "./services/user/user.service";
+import {HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +25,11 @@ import { AnimateOnScrollModule } from 'primeng/animateonscroll';
     MainContainerComponent,
     FooterBarComponent,
     GoogleMapsModule,
-    AnimateOnScrollModule
+    AnimateOnScrollModule,
+    HttpClientModule,
+
   ],
+  providers: [UserService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

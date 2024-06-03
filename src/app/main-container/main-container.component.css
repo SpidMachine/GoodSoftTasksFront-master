@@ -1,5 +1,113 @@
 .pi-angles-gym-h1 {
   font-size: 5rem;
   padding: 0 5%;
-  color: #00a650;
+}
+
+.bgPhoto-FirstFocus {
+  background-attachment: fixed;
+  height: 800px;
+  box-shadow: inset 500px 0 300px black;
+}
+
+.bg-manyLogo {
+  background-attachment: fixed;
+  box-shadow: inset 0 3px 10px black, inset 0 -3px 10px black;
+}
+
+.bg-FirstFocusFonts {
+  font-size: 80px;
+  text-shadow: 5px 1px 4px black;
+}
+
+.firstFocus-ul li {
+  text-shadow: 1px 1px 1px black;
+}
+
+.firstFocus-btn button {
+  padding: 0.8em 1.8em;
+  border: 2px solid #d3342b;
+  position: relative;
+  overflow: hidden;
+  background-color: #dd3e35;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 150%;
+  transition: .3s;
+  z-index: 1;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.firstFocus-btn button::before {
+  content: '';
+  width: 0;
+  height: 500%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: black;
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.firstFocus-btn button:hover::before {
+  width: 105%;
+}
+
+.firstFocus-btn button:hover {
+  color: #ffffff;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.secondBlock-mainPage {
+  position: relative;
+  top: -50px;
+  border-top: 5px solid red;
+  padding: 1% 2%;
+}
+
+.secondBlock-mainPage .fPart-text {
+  /*font-size: 30px;*/
+}
+
+.thirdBlock-mainPage {
+  position: relative;
+  top: -50px;
+  padding: 1% 2%;
+  background-color: #d20a0a;
+  color: #ffffff;
+}
+
+.gMapBlock {
+  position: relative;
+  top: 200px;
+  padding: 1% 2%;
+  background-color: #d20a0a;
+  width: 40%;
+  box-shadow: inset 1px 1px 5px black;
+}
+
+.imgThirdFocus {
+  z-index:2;
+  width: 70%;
+}
+
+.fPart-text {
+  padding: 1% 2%;
+}
+
+.shBlock {
+  text-shadow: 1px 1px 1px black;
+}
+
+.tb-gMap {
+  width: 100%;
+}
+
+.tb-gMap td {
+  width: 50%;
 }
