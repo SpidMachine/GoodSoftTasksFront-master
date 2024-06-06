@@ -8,6 +8,7 @@ import {ImageModule} from "primeng/image";
 import {RouterLink} from "@angular/router";
 import {TabMenuModule} from "primeng/tabmenu";
 import {RippleModule} from "primeng/ripple";
+import {JwtService} from "../../auth-reg/jwt.service";
 
 @Component({
   selector: 'app-top-bar',
@@ -24,11 +25,25 @@ import {RippleModule} from "primeng/ripple";
     TabMenuModule,
     RippleModule
   ],
+  providers: [JwtService],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.css'
 })
-export class TopBarComponent implements OnInit{
+export class TopBarComponent implements OnInit {
+
+  authorized?: boolean;
+  jwt?: string | null;
+
+  constructor(private service: JwtService) {
+  }
 
   ngOnInit() {
+    this.jwt = sessionStorage.getItem('jwt');
+    this.authorized = this.jwt != null && this.jwt != "";
+  }
+
+  logout() {
+    this.service.logout();
+    sessionStorage.removeItem('jwt');
   }
 }

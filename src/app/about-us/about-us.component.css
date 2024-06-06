@@ -1,0 +1,8 @@
+.gMapBlock {
+  position: relative;
+  top: 200px;
+  padding: 1% 2%;
+  background-color: #d20a0a;
+  width: 40%;
+  box-shadow: inset 1px 1px 5px black;
+}

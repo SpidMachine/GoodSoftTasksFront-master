@@ -1,0 +1,25 @@
+<div class="flex justify-content-center my-8">
+  <form class="form" [formGroup]="loginForm" (submit)="submitForm()">
+    <p class="title">Авторизация</p>
+<!--    <p class="message">Станьте членом нашего тренажерного зала</p>-->
+    <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
+                 name="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text" class="input"/>
+    <label>
+      <input formControlName="password" name="password" required="" placeholder="Пароль" type="password" class="input">
+    </label>
+    <button class="submit cursor-pointer font-bold text-xl" [disabled]="loginForm.invalid">Авторизироваться</button>
+    <div class="flex justify-content-end align-items-center">
+      <i>Нет учетной записи?</i><a routerLink="/register" class="text-xl text-red-300">Зарегистрироваться</a>
+    </div>
+  </form>
+  <div>
+    <h1 class="font-italic">Кабинет клиента ВитГТК Тренажерный зал</h1>
+    <ul class="text-xl font-italic">
+      <li>Записывайтесь на тренировки</li>
+      <li>Выбирайте и оплачивайте услуги</li>
+      <li>Управляйте семейным счетом</li>
+      <li>Получайте спецпредложения</li>
+      <li>Следите за новостями клуба</li>
+    </ul>
+  </div>
+</div>
