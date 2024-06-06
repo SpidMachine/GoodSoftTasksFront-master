@@ -22,6 +22,7 @@ export class JwtService {
   }
 
   logout(): Observable<any> {
+    sessionStorage.removeItem('jtw');
     return this.http.get(BASE_URL + 'logout')
   }
 }

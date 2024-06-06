@@ -11,7 +11,7 @@ import {
 } from "@angular/forms";
 import {JwtService} from "../jwt.service";
 import {InputMaskModule} from "primeng/inputmask";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -26,7 +26,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
-  constructor(private service: JwtService) {
+  constructor(private service: JwtService, private router: Router) {
   }
 
   registerForm: FormGroup = new FormGroup({
@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     // } else {
       console.log(this.registerForm.value);
       this.service.register(this.registerForm.value).subscribe(res => {
-        console.log(res);
+        // this.router.navigate(["/sign-in"]);
       })
     // }
   }

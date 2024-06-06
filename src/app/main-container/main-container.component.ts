@@ -11,6 +11,8 @@ import {User} from "../domain/User";
 import {UserService} from "../services/user/user.service";
 import {AboutUsComponent} from "../about-us/about-us.component";
 import {GMapsComponent} from "../parts/g-maps/g-maps.component";
+import {RouterLink} from "@angular/router";
+
 
 @Component({
   selector: 'app-main-container',
@@ -22,7 +24,8 @@ import {GMapsComponent} from "../parts/g-maps/g-maps.component";
     ButtonModule,
     AnimateOnScrollModule,
     AboutUsComponent,
-    GMapsComponent
+    GMapsComponent,
+    RouterLink,
   ],
   providers: [
     UserService
@@ -38,6 +41,7 @@ export class MainContainerComponent implements OnInit {
 
   constructor(private productService: ProductService, private userService: UserService) {
   }
+
 
   ngOnInit() {
     this.users$ = this.userService.getUsers();

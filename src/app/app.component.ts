@@ -9,9 +9,16 @@ import {FooterBarComponent} from "./toolBars/footer-bar/footer-bar.component";
 import {GoogleMapsModule} from '@angular/google-maps';
 import {AnimateOnScrollModule} from 'primeng/animateonscroll';
 import {UserService} from "./services/user/user.service";
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule, HttpEvent, HttpHandler,
+  HttpRequest,
+  provideHttpClient,
+  withInterceptors
+} from '@angular/common/http';
 import {AuthInterceptorService} from "./auth-reg/auth-interceptor.service";
 import {IMAGE_CONFIG} from "@angular/common";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -30,8 +37,7 @@ import {IMAGE_CONFIG} from "@angular/common";
     AnimateOnScrollModule,
     HttpClientModule,
   ],
-  providers: [UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}, {
+  providers: [UserService, {
     provide: IMAGE_CONFIG, useValue: {
       disableImageSizeWarning: true,
       disableImageLazyLoadWarning: true },}],
@@ -40,4 +46,5 @@ import {IMAGE_CONFIG} from "@angular/common";
 })
 export class AppComponent {
   title = 'GoodSoftTasksFront';
+
 }
