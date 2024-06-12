@@ -53,7 +53,7 @@ export class AuthComponent {
         this.messageService.add({
           severity: 'error',
           summary: 'Ошибка!',
-          detail: 'Неправильный пароль',
+          detail: 'Неправильный логин или пароль',
           contentStyleClass: "pl-5"
         });
       }

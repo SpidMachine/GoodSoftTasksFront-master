@@ -1,9 +1,9 @@
 <div class="flex justify-content-center my-8">
-  <form class="form" [formGroup]="registerForm" (submit)="submitForm()">
+  <form class="form" [formGroup]="registerForm">
     <p class="title">Регистрация</p>
     <!--    <p class="message">Станьте членом нашего тренажерного зала</p>-->
     <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
-                 name="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text" class="input"/>
+                 name="phoneNumber" id="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text" class="input"/>
     <label>
       <input formControlName="password" name="password" required="" placeholder="Пароль" type="password" class="input">
     </label>

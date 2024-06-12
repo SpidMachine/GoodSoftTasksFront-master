@@ -17,6 +17,7 @@ import {ButtonModule} from "primeng/button";
 import {MessageService} from "primeng/api";
 import {RippleModule} from "primeng/ripple";
 import {IsLoggedGuardService} from "../../guard/is-logged.guard";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ import {IsLoggedGuardService} from "../../guard/is-logged.guard";
     RouterLink,
     ToastModule,
     ButtonModule,
-    RippleModule
+    RippleModule,
+    NgIf
   ],
   providers: [JwtService, MessageService, IsLoggedGuardService],
   templateUrl: './register.component.html',
@@ -48,13 +50,21 @@ export class RegisterComponent implements OnInit {
 
   submitForm() {
     this.service.register(this.registerForm.value).subscribe(res => {
-      if (res.status == 0) {
-        this.router.navigate(["/sign-in"]).then(r => {});
-      } else if (res.status == 1) {
+      if (res.status == 1000 && this.registerForm.value.confirmPassword == this.registerForm.value.password) {
+        this.router.navigate(["/sign-in"]).then(r => {
+        });
+      } else if (res.status == 1001) {
         this.messageService.add({
           severity: 'error',
           summary: 'Ошибка!',
           detail: 'Пользователь с таким номером телефона уже существует!',
+          contentStyleClass: "pl-5"
+        });
+      } else {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ошибка!',
+          detail: 'Пароли не совпадают',
           contentStyleClass: "pl-5"
         });
       }
