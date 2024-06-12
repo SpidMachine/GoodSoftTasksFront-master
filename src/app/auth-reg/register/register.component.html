@@ -1,5 +1,5 @@
 <div class="flex justify-content-center my-8">
-  <form class="form" [formGroup]="registerForm">
+  <form class="form" [formGroup]="registerForm" (submit)="submitForm()">
     <p class="title">Регистрация</p>
     <!--    <p class="message">Станьте членом нашего тренажерного зала</p>-->
     <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
@@ -12,8 +12,7 @@
              type="password" class="input">
     </label>
     <p-button styleClass="submit cursor-pointer font-bold text-xl w-full flex justify-content-center"
-              type="button" [disabled]="registerForm.invalid" (click)="submitForm()">Зарегистрироваться
-    </p-button>
+              type="button" [disabled]="registerForm.invalid" label="Зарегистрироваться" (click)="submitForm()"></p-button>
     <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
   </form>
   <div>

@@ -136,3 +136,43 @@
   }
 }
 
+.firstFocus-btn button {
+  padding: 0.8em 1.8em;
+  border: 2px solid #d3342b;
+  position: relative;
+  overflow: hidden;
+  background-color: #dd3e35;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 150%;
+  transition: .3s;
+  z-index: 1;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.firstFocus-btn button::before {
+  content: '';
+  width: 0;
+  height: 800%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: black;
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.firstFocus-btn button:hover::before {
+  width: 105%;
+}
+
+.firstFocus-btn button:hover {
+  color: #ffffff;
+  cursor: pointer;
+  border: 2px solid white;
+}
+

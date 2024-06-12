@@ -47,6 +47,6 @@ export class MainContainerComponent implements OnInit {
 
 
   ngOnInit() {
-    this.users$ = this.userService.getUsers();
+    // this.users$ = this.userService.getUsers();
   }
 }

@@ -9,6 +9,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {IsLoggedGuardService} from "../../../guard/is-logged.guard";
 import {AdminMainComponent} from "../admin-main.component";
+import {Table, TableModule} from "primeng/table";
+import {InputIconModule} from "primeng/inputicon";
+import {IconFieldModule} from "primeng/iconfield";
+import {ChipsModule} from "primeng/chips";
+import {FormsModule} from "@angular/forms";
+import {ButtonModule} from "primeng/button";
 
 @Component({
   selector: 'app-user-list',
@@ -21,18 +27,28 @@ import {AdminMainComponent} from "../admin-main.component";
     MatIconModule,
     MatDividerModule,
     AdminMainComponent,
+    TableModule,
+    InputIconModule,
+    IconFieldModule,
+    ChipsModule,
+    FormsModule,
+    ButtonModule,
   ],
   providers: [IsLoggedGuardService, UserService],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent implements OnInit {
-  public users$?: Observable<User[]>;
+  users$!: any[];
+
+  searchValue: string | undefined;
 
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.users$ = this.userService.getUsers();
+    this.userService.getUsers().subscribe((res: any[]) => {
+      this.users$ = res;
+    })
   }
 
   userDel(id?: string) {
@@ -43,9 +59,5 @@ export class UserListComponent implements OnInit {
 
   userEdit(id?: string) {
     this.router.navigate(['admin/editUser', id])
-  }
-
-  toGoUserList() {
-    this.router.navigate(['/admin'])
   }
 }

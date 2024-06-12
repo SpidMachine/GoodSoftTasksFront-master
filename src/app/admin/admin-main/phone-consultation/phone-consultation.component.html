@@ -1,21 +1,39 @@
 <app-admin-main></app-admin-main>
 <div class="main-container">
   <div class="flex mt-8 w-auto justify-content-center">
-    <table class="table w-full">
-      <tr>
-        <th>Ид</th>
-        <th>Имя</th>
-        <th>Номер телефона</th>
-      </tr>
-      @if (phoneConsultation$ | async; as phoneConsultations) {
-        @for (phoneCons of phoneConsultations; track phoneCons.id) {
+    <p-table
+      #dt1
+      [value]="phoneConsultation$"
+      dataKey="id"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      [globalFilterFields]="['name', 'phoneNumber']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      class="table w-full">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="searchValue"
+                       (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword"/>
+            </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Ид</th>
+          <th>Имя</th>
+          <th>Номер телефона</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-phoneCons>
           <tr>
             <td>{{ phoneCons.id }}</td>
             <td>{{ phoneCons.name }}</td>
             <td>{{ phoneCons.phoneNumber }}</td>
           </tr>
-        }
-      }
-    </table>
+      </ng-template>>
+    </p-table>
   </div>
 </div>

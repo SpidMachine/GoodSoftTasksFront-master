@@ -1,4 +1,6 @@
-<button (click)="showDialog()">Жми</button>
+<div class="firstFocus-btn">
+  <button (click)="showDialog()" class="uppercase shadow-8 bg-red-400 border-1">Записаться на консультацию</button>
+</div>
 <p-dialog header="Заполните заявку и мы с вами свяжемся!" [modal]="true" [(visible)]="visible" [style]="{ width: '38rem' }">
   <form class="form" [formGroup]="phoneConsultationForm" (submit)="submitForm()">
     <label>

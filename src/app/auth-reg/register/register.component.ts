@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
   submitForm() {
     this.service.register(this.registerForm.value).subscribe(res => {
       if (res.status == 0) {
-        this.router.navigate(["/sign-in"]);
+        this.router.navigate(["/sign-in"]).then(r => {});
       } else if (res.status == 1) {
         this.messageService.add({
           severity: 'error',
@@ -59,14 +59,6 @@ export class RegisterComponent implements OnInit {
         });
       }
     })
-  }
-
-  showSuccess() {
-    this.messageService.add({severity: 'success', summary: 'Регистриция', detail: 'Вы успешно зарегистрировались на сайте!'});
-  }
-
-  showError() {
-    this.messageService.add({ severity: 'error', summary: 'Ошибка', detail: 'Убедитесь, что вы соблюдили все условия регистрации'});
   }
 
   inputStyles = {
