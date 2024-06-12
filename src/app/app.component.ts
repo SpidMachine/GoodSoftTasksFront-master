@@ -19,24 +19,25 @@ import {
 import {AuthInterceptorService} from "./auth-reg/auth-interceptor.service";
 import {IMAGE_CONFIG} from "@angular/common";
 import {Observable} from "rxjs";
+import {ScrollTopModule} from "primeng/scrolltop";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    ButtonModule,
-    InputTextModule,
-    FormsModule,
-    TopBarComponent,
-    MainContainerComponent,
-    FooterBarComponent,
-    GoogleMapsModule,
-    AnimateOnScrollModule,
-    HttpClientModule,
-  ],
+    imports: [RouterOutlet,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        ButtonModule,
+        InputTextModule,
+        FormsModule,
+        TopBarComponent,
+        MainContainerComponent,
+        FooterBarComponent,
+        GoogleMapsModule,
+        AnimateOnScrollModule,
+        HttpClientModule, ScrollTopModule,
+    ],
   providers: [UserService, {
     provide: IMAGE_CONFIG, useValue: {
       disableImageSizeWarning: true,

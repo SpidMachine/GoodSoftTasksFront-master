@@ -5,6 +5,8 @@
 
 .bgPhoto-FirstFocus {
   background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom;
   height: 800px;
   box-shadow: inset 500px 0 300px black;
 }
@@ -82,7 +84,7 @@
   color: #ffffff;
   width: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
 }
 
 .thirdBlock-mainPage::before {

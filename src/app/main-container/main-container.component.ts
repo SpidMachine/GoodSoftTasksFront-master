@@ -12,6 +12,9 @@ import {UserService} from "../services/user/user.service";
 import {AboutUsComponent} from "../about-us/about-us.component";
 import {GMapsComponent} from "../parts/g-maps/g-maps.component";
 import {RouterLink} from "@angular/router";
+import {ScrollTopModule} from "primeng/scrolltop";
+import {ModalPhoneConsultationComponent} from "../parts/modal-phone-consultation/modal-phone-consultation.component";
+import {MessageService} from "primeng/api";
 
 
 @Component({
@@ -26,18 +29,18 @@ import {RouterLink} from "@angular/router";
     AboutUsComponent,
     GMapsComponent,
     RouterLink,
+    ScrollTopModule,
+    ModalPhoneConsultationComponent,
   ],
   providers: [
-    UserService
+    UserService, MessageService
   ],
   templateUrl: './main-container.component.html',
   styleUrl: './main-container.component.css'
 })
 export class MainContainerComponent implements OnInit {
-  products: CarouselPhoto[] | any;
   public users$?: Observable<User[]>;
 
-  responsiveOptions: any[] | undefined;
 
   constructor(private productService: ProductService, private userService: UserService) {
   }
@@ -45,27 +48,5 @@ export class MainContainerComponent implements OnInit {
 
   ngOnInit() {
     this.users$ = this.userService.getUsers();
-
-    this.productService.getProductsSmall().then((products) => {
-      this.products = products;
-    });
-
-    this.responsiveOptions = [
-      {
-        breakpoint: '1199px',
-        numVisible: 1,
-        numScroll: 1
-      },
-      {
-        breakpoint: '991px',
-        numVisible: 2,
-        numScroll: 1
-      },
-      {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1
-      }
-    ];
   }
 }

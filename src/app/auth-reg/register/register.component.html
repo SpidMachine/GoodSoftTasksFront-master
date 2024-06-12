@@ -1,5 +1,5 @@
 <div class="flex justify-content-center my-8">
-  <form class="form" [formGroup]="registerForm" (submit)="submitForm()">
+  <form class="form" [formGroup]="registerForm">
     <p class="title">Регистрация</p>
     <!--    <p class="message">Станьте членом нашего тренажерного зала</p>-->
     <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
@@ -8,9 +8,13 @@
       <input formControlName="password" name="password" required="" placeholder="Пароль" type="password" class="input">
     </label>
     <label>
-      <input formControlName="confirmPassword" name="confirmPassword" required="" placeholder="Повторите пароль" type="password" class="input">
+      <input formControlName="confirmPassword" name="confirmPassword" required="" placeholder="Повторите пароль"
+             type="password" class="input">
     </label>
-    <button class="submit cursor-pointer font-bold text-xl" [disabled]="registerForm.invalid">Зарегистрироваться</button>
+    <p-button styleClass="submit cursor-pointer font-bold text-xl w-full flex justify-content-center"
+              type="button" [disabled]="registerForm.invalid" (click)="submitForm()">Зарегистрироваться
+    </p-button>
+    <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
   </form>
   <div>
     <h1 class="font-italic">Кабинет клиента ВитГТК Тренажерный зал</h1>
@@ -24,35 +28,3 @@
   </div>
 </div>
 
-
-
-
-<!--<div class="flex justify-content-center my-8">-->
-<!--  <form class="form" [formGroup]="registerForm" (submit)="submitForm()">-->
-<!--    <p class="title">Регистрация</p>-->
-<!--    <p class="message">Станьте членом нашего тренажерного зала</p>-->
-<!--    <label>-->
-<!--      <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text" class="input">-->
-<!--      <span>Номер телефона</span>-->
-<!--    </label>-->
-<!--    <label>-->
-<!--      <input formControlName="password" name="password" required="" placeholder="" type="password" class="input">-->
-<!--      <span>Пароль</span>-->
-<!--    </label>-->
-<!--    <label>-->
-<!--      <input formControlName="confirmPassword" name="password" required="" placeholder="" type="password" class="input">-->
-<!--      <span>Повторить пароль</span>-->
-<!--    </label>-->
-<!--    <button class="submit cursor-pointer" [disabled]="registerForm.invalid">Создать пользователя</button>-->
-<!--  </form>-->
-<!--  <div>-->
-<!--    <h1 class="font-italic">Кабинет клиента ВитГТК Тренажерный зал</h1>-->
-<!--    <ul class="text-xl font-italic">-->
-<!--      <li>Записывайтесь на тренировки</li>-->
-<!--      <li>Выбирайте и оплачивайте услуги</li>-->
-<!--      <li>Управляйте семейным счетом</li>-->
-<!--      <li>Получайте спецпредложения</li>-->
-<!--      <li>Следите за новостями клуба</li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</div>-->

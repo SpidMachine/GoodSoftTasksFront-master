@@ -1,0 +1,12 @@
+<button (click)="showDialog()">Жми</button>
+<p-dialog header="Заполните заявку и мы с вами свяжемся!" [modal]="true" [(visible)]="visible" [style]="{ width: '38rem' }">
+  <form class="form" [formGroup]="phoneConsultationForm" (submit)="submitForm()">
+    <label>
+      <input formControlName="name" name="name" required="" placeholder="Ваше имя" type="text" class="input">
+    </label>
+    <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
+                 name="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text" class="input"/>
+    <p-button class="" styleClass="submit cursor-pointer font-bold text-xl w-full flex justify-content-center bg-red-500" (click)="submitForm()" [disabled]="phoneConsultationForm.invalid">Авторизироваться</p-button>
+    <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
+  </form>
+</p-dialog>

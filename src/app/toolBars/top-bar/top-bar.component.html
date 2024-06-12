@@ -8,17 +8,17 @@
       </a>
     </div>
     <div class="flex justify-content-between gap-5">
-      <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="">Главная</a>
-      <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="admin">О нас</a>
-      <a class="hover:text-green-500 underline-hover-top-bar text-0" href="#">Тренеры</a>
-    </div>
-    <div class="flex justify-content-between gap-5">
-      <a class="hover:text-green-500 underline-hover-top-bar text-0" href="#">График</a>
-      <a class="hover:text-green-500 underline-hover-top-bar text-0" href="#">Цены</a>
+      <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="">Тренажерный зал</a>
+      <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="swimming-pool">Бассейн</a>
+      <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="coaches">Тренеры</a>
       <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="aboutUs">Контакты</a>
     </div>
+    @if (authorized) {
+      <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="admin">Админка</a>
+    }
   </div>
-  <div class="flex gap-5">
+  <div class="flex gap-5 font-bold">
+    <a class="hover:text-green-500 underline-hover-top-bar text-0" href="tel:+80212361707">8 (0212) 36-17-07</a>
     @if (authorized) {
       <div>
         <a routerLink="" (click)="logout()" class="underline-hover-top-bar">

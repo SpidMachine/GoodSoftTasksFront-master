@@ -3,6 +3,9 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {JwtService} from "../jwt.service";
 import {Router, RouterLink} from "@angular/router";
 import {InputMaskModule} from "primeng/inputmask";
+import {MessageService} from "primeng/api";
+import {ToastModule} from "primeng/toast";
+import {IsLoggedGuardService} from "../../guard/is-logged.guard";
 
 @Component({
   selector: 'app-auth',
@@ -11,14 +14,15 @@ import {InputMaskModule} from "primeng/inputmask";
     FormsModule,
     ReactiveFormsModule,
     InputMaskModule,
-    RouterLink
+    RouterLink,
+    ToastModule
   ],
-  providers: [JwtService],
+  providers: [JwtService, MessageService, IsLoggedGuardService],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
 export class AuthComponent {
-  constructor(private service: JwtService, private router: Router) {
+  constructor(private service: JwtService, private router: Router, private messageService: MessageService) {
   }
 
   loginForm: FormGroup = new FormGroup({
@@ -26,17 +30,35 @@ export class AuthComponent {
     password: new FormControl('', [Validators.required]),
   })
 
+  checkJwt() {
+    sessionStorage.removeItem("jwt");
+  }
+
   submitForm() {
     this.service.login(this.loginForm.value).subscribe(res => {
-      if (res.jwtToken != null) {
+      if (res.jwtToken != null && res.status == 1000) {
         const jwt = res.jwtToken;
-        console.log(jwt);
         sessionStorage.setItem('jwt', jwt);
-        this.router.navigate(["/admin"]);
+        this.router.navigate(["/admin"]).then(r => {
+          window.location.reload();
+        });
+      } else if (res.status == 1001) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ошибка!',
+          detail: 'Пользователь с таким номером телефона не найден',
+          contentStyleClass: "pl-5"
+        });
+      } else if (res.status == 1002) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ошибка!',
+          detail: 'Неправильный пароль',
+          contentStyleClass: "pl-5"
+        });
       }
     })
   }
-
   inputStyles = {
     'background-color': '#333',
     'color': '#fff',

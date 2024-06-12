@@ -13,7 +13,6 @@ import {CreateUserComponent} from "./create-user/create-user.component";
     TableModule,
     AsyncPipe,
     DatePipe,
-    UserListComponent,
     RouterLink,
     CreateUserComponent
   ],

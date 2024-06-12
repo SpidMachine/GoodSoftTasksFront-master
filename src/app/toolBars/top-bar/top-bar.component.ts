@@ -5,10 +5,11 @@ import {MenuItem, SharedModule} from "primeng/api";
 import {NgOptimizedImage, NgStyle} from "@angular/common";
 import {ButtonModule} from "primeng/button";
 import {ImageModule} from "primeng/image";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {TabMenuModule} from "primeng/tabmenu";
 import {RippleModule} from "primeng/ripple";
 import {JwtService} from "../../auth-reg/jwt.service";
+import {AuthInterceptorService} from "../../auth-reg/auth-interceptor.service";
 
 @Component({
   selector: 'app-top-bar',
@@ -34,7 +35,7 @@ export class TopBarComponent implements OnInit {
   authorized?: boolean;
   jwt?: string | null;
 
-  constructor(private service: JwtService) {
+  constructor(private service: JwtService, private router: Router) {
   }
 
   ngOnInit() {
@@ -45,5 +46,10 @@ export class TopBarComponent implements OnInit {
   logout() {
     this.service.logout();
     sessionStorage.removeItem('jwt');
+    this.router.navigate(['']).then(r => {
+      window.location.reload();
+    })
   }
+
+    protected readonly AuthInterceptorService = AuthInterceptorService;
 }

@@ -12,6 +12,11 @@ import {
 import {JwtService} from "../jwt.service";
 import {InputMaskModule} from "primeng/inputmask";
 import {Router, RouterLink} from "@angular/router";
+import {ToastModule} from "primeng/toast";
+import {ButtonModule} from "primeng/button";
+import {MessageService} from "primeng/api";
+import {RippleModule} from "primeng/ripple";
+import {IsLoggedGuardService} from "../../guard/is-logged.guard";
 
 @Component({
   selector: 'app-register',
@@ -19,14 +24,17 @@ import {Router, RouterLink} from "@angular/router";
   imports: [
     ReactiveFormsModule,
     InputMaskModule,
-    RouterLink
+    RouterLink,
+    ToastModule,
+    ButtonModule,
+    RippleModule
   ],
-  providers: [JwtService],
+  providers: [JwtService, MessageService, IsLoggedGuardService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
-  constructor(private service: JwtService, private router: Router) {
+  constructor(private service: JwtService, private router: Router, private messageService: MessageService) {
   }
 
   registerForm: FormGroup = new FormGroup({
@@ -35,17 +43,30 @@ export class RegisterComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required]),
   })
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submitForm() {
-    // if (this.registerForm.value("password") != this.registerForm.value("confirmPassword")) {
-    //   alert("Ошибка");
-    // } else {
-      console.log(this.registerForm.value);
-      this.service.register(this.registerForm.value).subscribe(res => {
-        // this.router.navigate(["/sign-in"]);
-      })
-    // }
+    this.service.register(this.registerForm.value).subscribe(res => {
+      if (res.status == 0) {
+        this.router.navigate(["/sign-in"]);
+      } else if (res.status == 1) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ошибка!',
+          detail: 'Пользователь с таким номером телефона уже существует!',
+          contentStyleClass: "pl-5"
+        });
+      }
+    })
+  }
+
+  showSuccess() {
+    this.messageService.add({severity: 'success', summary: 'Регистриция', detail: 'Вы успешно зарегистрировались на сайте!'});
+  }
+
+  showError() {
+    this.messageService.add({ severity: 'error', summary: 'Ошибка', detail: 'Убедитесь, что вы соблюдили все условия регистрации'});
   }
 
   inputStyles = {

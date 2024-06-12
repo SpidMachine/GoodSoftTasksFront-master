@@ -7,6 +7,8 @@ import {Router, RouterLink} from "@angular/router";
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
+import {IsLoggedGuardService} from "../../../guard/is-logged.guard";
+import {AdminMainComponent} from "../admin-main.component";
 
 @Component({
   selector: 'app-user-list',
@@ -18,7 +20,9 @@ import {MatDividerModule} from "@angular/material/divider";
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    AdminMainComponent,
   ],
+  providers: [IsLoggedGuardService, UserService],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })

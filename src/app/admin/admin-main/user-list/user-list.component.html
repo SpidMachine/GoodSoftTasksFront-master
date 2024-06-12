@@ -1,33 +1,36 @@
-<div class="flex mt-8 w-auto justify-content-center">
-  <table class="table w-full">
-    <tr>
-      <th>Ид</th>
-      <th>Имя</th>
-      <th>Фамилия</th>
-      <th>Пароль</th>
-      <th>Почта</th>
-      <th>Пол</th>
-      <th>День рождения</th>
-      <th>Номер телефона</th>
-      <th>Действие</th>
-    </tr>
-    @if (users$ | async; as users) {
-      @for (user of users; track user.id) {
-        <tr>
-          <td>{{ user.id }}</td>
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.lastName }}</td>
-          <td>ЗАШИФРОВАН</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.gender }}</td>
-          <td>{{ user.birthday }}</td>
-          <td>{{ user.phoneNumber }}</td>
-          <td class="flex align-items-center justify-content-center">
-            <button class="btnEdit-userList" (click)="userEdit(user.id)"><i class="pi pi-pen-to-square"></i></button>
-            <button class="btnDel-userList" (click)="userDel(user.id)"><i class="pi pi-trash font-bold"></i></button>
-          </td>
-        </tr>
+<app-admin-main></app-admin-main>
+<div class="main-container">
+  <div class="flex mt-8 w-auto justify-content-center">
+    <table class="table w-full">
+      <tr>
+        <th>Ид</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Пароль</th>
+        <th>Почта</th>
+        <th>Пол</th>
+        <th>День рождения</th>
+        <th>Номер телефона</th>
+        <th>Действие</th>
+      </tr>
+      @if (users$ | async; as users) {
+        @for (user of users; track user.id) {
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>ЗАШИФРОВАН</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.birthday }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td class="flex align-items-center justify-content-center">
+              <button class="btnEdit-userList" (click)="userEdit(user.id)"><i class="pi pi-pen-to-square"></i></button>
+              <button class="btnDel-userList" (click)="userDel(user.id)"><i class="pi pi-trash font-bold"></i></button>
+            </td>
+          </tr>
+        }
       }
-    }
-  </table>
+    </table>
+  </div>
 </div>

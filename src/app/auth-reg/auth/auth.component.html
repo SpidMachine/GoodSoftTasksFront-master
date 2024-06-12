@@ -7,10 +7,11 @@
     <label>
       <input formControlName="password" name="password" required="" placeholder="Пароль" type="password" class="input">
     </label>
-    <button class="submit cursor-pointer font-bold text-xl" [disabled]="loginForm.invalid">Авторизироваться</button>
+    <button class="submit cursor-pointer font-bold text-xl" (click)="checkJwt()" [disabled]="loginForm.invalid">Авторизироваться</button>
     <div class="flex justify-content-end align-items-center">
       <i>Нет учетной записи?</i><a routerLink="/register" class="text-xl text-red-300">Зарегистрироваться</a>
     </div>
+    <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
   </form>
   <div>
     <h1 class="font-italic">Кабинет клиента ВитГТК Тренажерный зал</h1>

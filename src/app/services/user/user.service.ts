@@ -14,6 +14,14 @@ export class UserService {
 
   baseURL = "http://localhost:8080/users";
 
+  isLoggedIn() {
+    return this.getToken() !== null;
+  }
+
+  getToken() {
+    return sessionStorage.getItem("jwt");
+  }
+
   public save(data: User) {
     return this.http.post(`${this.baseURL}`, data);
   }
@@ -23,7 +31,7 @@ export class UserService {
   }
 
   public getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseURL}`, {headers: this.createAuthorizationHeader()});
+    return this.http.get<User[]>(`${this.baseURL}`);
   }
 
   public put(id: number, data: User) {
@@ -32,17 +40,5 @@ export class UserService {
 
   public delete(id: string | undefined): Observable<Object> {
     return this.http.delete(`${this.baseURL}/${id}`);
-  }
-
-  private createAuthorizationHeader() {
-    const jwtToken = sessionStorage.getItem('jwt');
-    if (jwtToken) {
-      return new HttpHeaders().set(
-        "Authorization", "Bearer " + jwtToken
-      )
-    } else {
-      console.log("Not found jwtToken");
-    }
-    return new HttpHeaders();
   }
 }

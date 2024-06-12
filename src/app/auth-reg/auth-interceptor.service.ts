@@ -8,7 +8,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (sessionStorage.getItem("jwt")) {
+    if (sessionStorage.getItem("jwt") != null && sessionStorage.getItem("jwt") != "") {
       const reqWithHeader = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + sessionStorage.getItem("jwt")),
       });
