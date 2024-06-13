@@ -51,5 +51,9 @@ export class TopBarComponent implements OnInit {
     })
   }
 
+  userProfile(id: string) {
+    this.router.navigate(['profile', id])
+  }
+
     protected readonly AuthInterceptorService = AuthInterceptorService;
 }

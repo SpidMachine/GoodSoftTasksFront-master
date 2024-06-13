@@ -11,6 +11,7 @@ import {IsLoggedGuardService} from "./guard/is-logged.guard";
 import {CoachesComponent} from "./coaches/coaches.component";
 import {PhoneConsultationComponent} from "./admin/admin-main/phone-consultation/phone-consultation.component";
 import {UserListComponent} from "./admin/admin-main/user-list/user-list.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 export const routes: Routes = [
     {
@@ -60,6 +61,10 @@ export const routes: Routes = [
     {
       path: "phoneCons",
       component: PhoneConsultationComponent
+    },
+    {
+      path: "profile",
+      component: ProfileComponent
     }
   ]
 ;
