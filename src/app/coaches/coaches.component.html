@@ -1,70 +1,26 @@
 <div class="container">
   <div class="main-container">
     <div class="grid">
-      <div class="col-3 flex justify-content-center">
-        <div class="product-item shadow-8">
-          <p-image
-            src="assets/gallery/truePhotos/coach/trener-zarplata.jpg"
-            alt="Image"
-            height="250px"
-            width="350px"
-            [preview]="true"/>
-          <div class="product-list">
-            <h3 class="text-3xl">Тасиенко Анатолий Алексеевич</h3>
-            <span>Педагог доп. образования</span>
-            <span class="price text-xl">Тренажерный зал <br> 16:15-18:30 Вт, чт</span>
-            <app-modal-coach-phone-cons></app-modal-coach-phone-cons>
+      @for (coach of coaches; track coach.id) {
+        <div class="col-3 flex justify-content-center">
+          <div class="product-item shadow-8">
+            <p-image
+              src="http://localhost:8080/photo/{{ coach.photoUrl }}"
+              alt="Image"
+              height="250px"
+              width="350px"
+              [preview]="true"/>
+            <div class="product-list">
+              <h3 class="text-3xl">{{ coach.name }}</h3>
+              <i>{{ coach.email }}</i><br>
+              <span class="text-2xl">{{ coach.specialization }}</span>
+              <span class="price text-3xl">{{ coach.description }}</span>
+              <span class="price text-xl">{{ coach.place }}</span>
+              <app-modal-coach-phone-cons></app-modal-coach-phone-cons>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-3 flex justify-content-center">
-        <div class="product-item shadow-8">
-          <p-image
-            src="assets/gallery/truePhotos/coach/kulinichi_900x600.jpg"
-            alt="Image"
-            height="250px"
-            width="350px"
-            [preview]="true"/>
-          <div class="product-list">
-            <h3 class="text-3xl">Саников Вячеслав Александрович</h3>
-            <span>Педагог доп. образования</span>
-            <span class="price text-xl">Тренажерный зал <br> 16:15-18:30 Пн, ср</span>
-            <app-modal-coach-phone-cons></app-modal-coach-phone-cons>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 flex justify-content-center">
-        <div class="product-item shadow-8">
-          <p-image
-            src="assets/gallery/truePhotos/coach/trenerplavaniebassejn-002.jpg"
-            alt="Image"
-            height="250px"
-            width="350px"
-            [preview]="true"/>
-          <div class="product-list">
-            <h3 class="text-3xl">Попков Сергей Михайлович</h3>
-            <span>Инструктор – методист</span>
-            <span class="price text-xl">- <br> Бассейн</span>
-            <app-modal-coach-phone-cons></app-modal-coach-phone-cons>
-          </div>
-        </div>
-      </div>
-      <div class="col-3 flex justify-content-center">
-        <div class="product-item shadow-8">
-          <p-image
-            src="assets/gallery/truePhotos/coach/алла кривицкая.jpg"
-            alt="Image"
-            height="250px"
-            width="350px"
-            [preview]="true"/>
-          <div class="product-list">
-            <h3 class="text-3xl">Середа Ольга Сергеевна</h3>
-            <span>Инструктор – методист</span>
-            <span class="price text-xl">- <br> Бассейн</span>
-            <app-modal-coach-phone-cons></app-modal-coach-phone-cons>
-          </div>
-        </div>
-      </div>
+      }
     </div>
     <div class="secondBlock-mainPage bg-white grid">
       <div class="fPart-text col-12">

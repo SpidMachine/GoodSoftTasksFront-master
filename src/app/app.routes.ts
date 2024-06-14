@@ -63,7 +63,7 @@ export const routes: Routes = [
       component: PhoneConsultationComponent
     },
     {
-      path: "profile",
+      path: "profile/:id",
       component: ProfileComponent
     }
   ]

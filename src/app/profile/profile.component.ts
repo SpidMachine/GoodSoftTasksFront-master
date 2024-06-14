@@ -8,6 +8,7 @@ import {User} from "../domain/User";
   selector: 'app-profile',
   standalone: true,
   imports: [],
+  providers: [UserService],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -17,13 +18,15 @@ export class ProfileComponent implements OnInit {
   }
 
   userId: string | null = '';
-  user!: Observable<User>;
+  user!: any;
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((data) => {
+    this.activatedRoute.paramMap.subscribe((data:any) => {
       this.userId = data.get("id");
       this.user = this.service.getUser(this.userId);
-      console.log(this.user);
+      this.user.subscribe((res: any) => {
+        this.user = res;
+      });
     })
   }
 }

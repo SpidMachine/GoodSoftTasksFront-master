@@ -46,13 +46,14 @@ export class TopBarComponent implements OnInit {
   logout() {
     this.service.logout();
     sessionStorage.removeItem('jwt');
+    sessionStorage.removeItem('userId');
     this.router.navigate(['']).then(r => {
       window.location.reload();
     })
   }
 
-  userProfile(id: string) {
-    this.router.navigate(['profile', id])
+  userProfile() {
+    this.router.navigate(['profile', sessionStorage.getItem("userId")]).then(r => r);
   }
 
     protected readonly AuthInterceptorService = AuthInterceptorService;

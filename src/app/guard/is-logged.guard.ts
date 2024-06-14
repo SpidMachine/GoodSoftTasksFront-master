@@ -19,7 +19,7 @@ export class IsLoggedGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     if (!this.service.isLoggedIn()) {
-      this.router.navigate(['/sign-in'])
+      this.router.navigate(['/sign-in']).then(r => r)
       return false;
     }
     return true;
