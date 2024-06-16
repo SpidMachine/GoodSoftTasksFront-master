@@ -40,7 +40,7 @@ export class AuthComponent {
         const jwt = res.jwtToken;
         sessionStorage.setItem('jwt', jwt);
         sessionStorage.setItem('userId', res.userId);
-        this.router.navigate(["/admin"]).then(r => {
+        this.router.navigate([""]).then(r => {
           window.location.reload();
         });
       } else if (res.status == 1001) {

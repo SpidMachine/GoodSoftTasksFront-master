@@ -1,8 +1,51 @@
-<div class="main-container">
-  <div class="container">
+<div class="container">
+  <div class="main-container">
     <div class="grid">
+      <div class="col-6">
 
-      {{ user.phoneNumber }}
+      </div>
+      <div class="col-6">
+        <form class="form" [formGroup]="editUserForm">
+          <p class="title"></p>
+          <p class="message">Изменить пользователя в базе данных</p>
+          <div class="flex">
+            <label>
+              <input formControlName="firstName" name="firstname" placeholder="" type="text" class="input">
+              <span>Имя</span>
+            </label>
+
+            <label>
+              <input formControlName="lastName" name="lastName" required="" placeholder="" type="text" class="input">
+              <span>Фамилия</span>
+            </label>
+          </div>
+
+          <label>
+            <input formControlName="email" name="email" required="" placeholder="" type="email" class="input">
+            <span>Почта</span>
+          </label>
+
+          <label>
+            <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input">
+            <span>Почта</span>
+          </label>
+
+          <label>
+            <select formControlName="gender" name="gender" class="input">
+              <option>Мужской</option>
+              <option>Женский</option>
+            </select>
+            <span>Пол</span>
+          </label>
+
+          <label>
+            <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text" class="input">
+            <span>Номер телефона</span>
+          </label>
+
+          <button class="submit" (click)="onSubmit(editUserForm.value.id)">Изменить пользователя</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

@@ -16,7 +16,35 @@
               <span class="text-2xl">{{ coach.specialization }}</span>
               <span class="price text-3xl">{{ coach.description }}</span>
               <span class="price text-xl">{{ coach.place }}</span>
-              <app-modal-coach-phone-cons></app-modal-coach-phone-cons>
+              <div class="firstFocus-btn">
+                <button (click)="showDialog()" class="button">Записаться</button>
+              </div>
+              <p-dialog [draggable]="false"
+                        [resizable]="false" header="Заполните заявку и мы с вами свяжемся!" [modal]="true" [(visible)]="visible"
+                        [style]="{ width: '38rem' }">
+                <form class="form" [formGroup]="phoneConsultationForm" (submit)="submitForm()">
+                  <input formControlName="status" name="status" type="hidden">
+                  <label>
+                    <input formControlName="coachName" name="coachName" type="text">
+                  </label>
+                  <label>
+                    <input formControlName="name" name="name" required="" placeholder="Ваше имя" type="text"
+                           class="input my-2">
+                  </label>
+                  <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles"
+                               formControlName="phoneNumber"
+                               name="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text"/>
+                  <p-button
+                    styleClass="submit my-2 cursor-pointer font-bold text-xl w-full flex justify-content-center bg-red-500"
+                    (click)="submitForm()" [disabled]="phoneConsultationForm.invalid">Отправить
+                  </p-button>
+                  <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
+                  <i><a
+                    href="https://astral.ru/upload/iblock/f8f/4b2v4eld5of5dko2w68pb0o3wbne43zi/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B8%20%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BE%D1%82%2026.03.2021.pdf">ОФЕРТА</a>
+                    на заключение соглашения о конфиденциальности и неразглашении информации
+                  </i>
+                </form>
+              </p-dialog>
             </div>
           </div>
         </div>

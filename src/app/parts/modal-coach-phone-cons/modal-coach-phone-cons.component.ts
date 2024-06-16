@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ButtonModule} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -7,6 +7,8 @@ import {ToastModule} from "primeng/toast";
 import {PhoneConsultationService} from "../../services/phoneConsultation/phone-consultation.service";
 import {Router, RouterLink} from "@angular/router";
 import {MessageService} from "primeng/api";
+import {CoachService} from "../../services/coach/coach.service";
+import {Coach} from "../../domain/Coach";
 
 @Component({
   selector: 'app-modal-coach-phone-cons',
@@ -20,22 +22,34 @@ import {MessageService} from "primeng/api";
     ToastModule,
     RouterLink
   ],
+  providers: [MessageService, CoachService],
   templateUrl: './modal-coach-phone-cons.component.html',
   styleUrl: './modal-coach-phone-cons.component.css'
 })
-export class ModalCoachPhoneConsComponent {
+export class ModalCoachPhoneConsComponent implements OnInit {
   visible = false;
+  nameOfCoach = "";
 
   public showDialog() {
     this.visible = true;
   }
 
-  constructor(private service: PhoneConsultationService, private router: Router, private messageService: MessageService) {
+  ngOnInit() {
+
+  }
+
+  constructor(
+    private service: PhoneConsultationService,
+    private router: Router,
+    private messageService: MessageService,
+    private coachService: CoachService
+  ) {
   }
 
   phoneConsultationForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
+    coachName: new FormControl()
   })
 
   submitForm() {

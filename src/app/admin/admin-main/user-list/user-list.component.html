@@ -30,6 +30,7 @@
           <th>Пол</th>
           <th>День рождения</th>
           <th>Номер телефона</th>
+          <th>Роль</th>
           <th>Действие</th>
         </tr>
       </ng-template>
@@ -43,6 +44,7 @@
           <td>{{ user.gender }}</td>
           <td>{{ user.birthday }}</td>
           <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.role }}</td>
           <td class="flex align-items-center justify-content-center">
             <button class="btnEdit-userList" (click)="userEdit(user.id)"><i class="pi pi-pen-to-square"></i></button>
             <button class="btnDel-userList" (click)="userDel(user.id)"><i class="pi pi-trash font-bold"></i></button>

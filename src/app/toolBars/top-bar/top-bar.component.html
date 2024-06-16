@@ -13,7 +13,7 @@
       <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="coaches">Тренеры</a>
       <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="aboutUs">Контакты</a>
     </div>
-    @if (authorized) {
+    @if (userRole == "ADMIN") {
       <a class="hover:text-green-500 underline-hover-top-bar text-0" routerLink="admin">Админка</a>
     }
   </div>

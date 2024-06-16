@@ -17,4 +17,8 @@ export class CoachService {
   public getCoaches(): Observable<Coach[]> {
     return this.http.get<Coach[]>(`${this.baseURL}`);
   }
+
+  public getCoach(id: string | null): Observable<Coach> {
+    return this.http.get<Coach>(`${this.baseURL}/${id}`)
+  }
 }
