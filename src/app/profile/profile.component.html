@@ -1,50 +1,106 @@
-<div class="container">
+<div class="container py-5">
   <div class="main-container">
-    <div class="grid">
-      <div class="col-6">
-
+    <div class="w-full">
+      <div class="surface-300 py-5 px-5 gap-5">
+        <ul class="list-none flex gap-5">
+          <li class="h-full surface-900"><a routerLink="" (click)="userProfile()" class=" text-2xl"><i>ПРОФИЛЬ</i></a>
+          </li>
+          <li><a routerLink="/prof/gym" class="h-full text-2xl"><i>ТРЕНАЖЕРНЫЙ ЗАЛ</i></a></li>
+        </ul>
       </div>
-      <div class="col-6">
-        <form class="form" [formGroup]="editUserForm">
-          <p class="title"></p>
-          <p class="message">Изменить пользователя в базе данных</p>
-          <div class="flex">
+      <div class="surface-50">
+        <div>
+          <p-table
+            #dt1
+            [value]="workouts$"
+            dataKey="id"
+            [rows]="10"
+            [rowsPerPageOptions]="[10, 25, 50]"
+            [paginator]="true"
+            [globalFilterFields]="['firstName', 'lastName', 'email', 'phoneNumber']"
+            [tableStyle]="{ 'min-width': '75rem' }"
+            class="table w-full">
+            <ng-template pTemplate="caption">
+              <div class="flex">
+          <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="searchValue"
+                       (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword"/>
+            </span>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Ид</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Пароль</th>
+                <th>Почта</th>
+                <th>Пол</th>
+                <th>День рождения</th>
+                <th>Номер телефона</th>
+                <th>Роль</th>
+                <th>Действие</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+              <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>ЗАШИФРОВАН</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.birthday }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{{ user.role }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+        <div>
+          <form class="form" [formGroup]="editUserForm">
+            <i class="title my-5">Профиль</i>
             <label>
               <input formControlName="firstName" name="firstname" placeholder="" type="text" class="input">
               <span>Имя</span>
             </label>
 
             <label>
-              <input formControlName="lastName" name="lastName" required="" placeholder="" type="text" class="input">
+              <input formControlName="lastName" name="lastName" required="" placeholder="" type="text"
+                     class="input">
               <span>Фамилия</span>
             </label>
-          </div>
 
-          <label>
-            <input formControlName="email" name="email" required="" placeholder="" type="email" class="input">
-            <span>Почта</span>
-          </label>
+            <label>
+              <input formControlName="email" name="email" required="" placeholder="" type="email" class="input">
+              <span>Почта</span>
+            </label>
 
-          <label>
-            <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input">
-            <span>Почта</span>
-          </label>
+            <label>
+              <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input" max="{{ date | date : 'yyyy-MM-dd' }}">
+              <span>Дата рождения</span>
+            </label>
 
-          <label>
-            <select formControlName="gender" name="gender" class="input">
-              <option>Мужской</option>
-              <option>Женский</option>
-            </select>
-            <span>Пол</span>
-          </label>
+            <label>
+              <select formControlName="gender" name="gender" class="input">
+                <option>Мужской</option>
+                <option>Женский</option>
+              </select>
+              <span>Пол</span>
+            </label>
 
-          <label>
-            <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text" class="input">
-            <span>Номер телефона</span>
-          </label>
+            <label>
+              <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text"
+                     class="input">
+              <span>Номер телефона</span>
+            </label>
+            <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
 
-          <button class="submit" (click)="onSubmit(editUserForm.value.id)">Изменить пользователя</button>
-        </form>
+            <button class="submit" (click)="onSubmit(editUserForm.value.id)">Сохранить</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

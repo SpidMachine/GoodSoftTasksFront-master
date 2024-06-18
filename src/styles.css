@@ -100,8 +100,8 @@ body {
 }
 
 .container {
+  position: relative;
   width: 100%;
-  height: 100%;
   box-shadow: inset 0 0 20px black;
   --s: 200px; /* control the size */
   --c1: #1d1d1d;
@@ -122,3 +122,13 @@ body {
   background-size: var(--s) calc(var(--s) * 0.577);
 }
 
+.p-tabview-nav {
+  display: block;
+  font-size: 30px;
+}
+
+.p-tabview-panels {
+  width: 1100px;
+  display: flex;
+  justify-content: center;
+}

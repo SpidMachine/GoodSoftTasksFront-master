@@ -1,7 +1,6 @@
 import {Routes} from '@angular/router';
 import {MainContainerComponent} from "./main-container/main-container.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
-import {AdminMainComponent} from "./admin/admin-main/admin-main.component";
 import {CreateUserComponent} from "./admin/admin-main/create-user/create-user.component";
 import {EditUserComponent} from "./admin/admin-main/edit-user/edit-user.component";
 import {RegisterComponent} from "./auth-reg/register/register.component";
@@ -12,6 +11,7 @@ import {CoachesComponent} from "./coaches/coaches.component";
 import {PhoneConsultationComponent} from "./admin/admin-main/phone-consultation/phone-consultation.component";
 import {UserListComponent} from "./admin/admin-main/user-list/user-list.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {GymSectionComponent} from "./profile/gym-section/gym-section.component";
 
 export const routes: Routes = [
     {
@@ -60,11 +60,16 @@ export const routes: Routes = [
     },
     {
       path: "phoneCons",
-      component: PhoneConsultationComponent
+      component: PhoneConsultationComponent,
+      canActivate: [IsLoggedGuardService]
     },
     {
       path: "profile/:id",
       component: ProfileComponent
+    },
+    {
+      path: "prof/gym",
+      component: GymSectionComponent
     }
   ]
 ;

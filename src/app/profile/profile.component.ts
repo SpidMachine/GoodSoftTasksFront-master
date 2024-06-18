@@ -1,19 +1,42 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Observable} from "rxjs";
 import {User} from "../domain/User";
 import {PaginatorModule} from "primeng/paginator";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {TabViewModule} from "primeng/tabview";
+import {ButtonModule} from "primeng/button";
+import {DialogModule} from "primeng/dialog";
+import {ImageModule} from "primeng/image";
+import {InputMaskModule} from "primeng/inputmask";
+import {ToastModule} from "primeng/toast";
+import {CoachService} from "../services/coach/coach.service";
+import {ScrollPanelModule} from "primeng/scrollpanel";
+import {MessageService} from "primeng/api";
+import {InputTextModule} from "primeng/inputtext";
+import {TableModule} from "primeng/table";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [
     PaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabViewModule,
+    ButtonModule,
+    DialogModule,
+    ImageModule,
+    InputMaskModule,
+    ToastModule,
+    ScrollPanelModule,
+    RouterLink,
+    InputTextModule,
+    TableModule,
+    DatePipe
   ],
-  providers: [UserService],
+  providers: [UserService, CoachService, MessageService],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -23,20 +46,24 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private coachService: CoachService,
+    private messageService: MessageService,
     )
   {}
 
+
+  workouts$!: any[];
+  searchValue: string | undefined;
+  activeIndex: number = 0;
   userId: string | null = '';
   user!: any;
+  coaches?: any[];
+  date: Date = new Date();
 
   ngOnInit() {
-    // this.activatedRoute.paramMap.subscribe((data:any) => {
-    //   this.userId = data.get("id");
-    //   this.user = this.userService.getUser(this.userId);
-    //   this.user.subscribe((res: any) => {
-    //     this.user = res;
-    //   });
-    // })
+    this.coachService.getCoaches().subscribe(res => {
+      this.coaches = res;
+    })
 
     this.activatedRoute.paramMap.subscribe((data) => {
       this.userId = data.get('id');
@@ -69,11 +96,16 @@ export class ProfileComponent implements OnInit {
   onSubmit(id:number) {
     const obj = this.editUserForm.value;
     this.userService.put(id, obj).subscribe((res:any) => {
-      this.toGoUserList();
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Сохранение!',
+        detail: 'Данные успешно сохранены',
+        contentStyleClass: "pl-5"
+      });
     })
   }
 
-  toGoUserList() {
-    this.router.navigate(['admin'])
+  userProfile() {
+    this.router.navigate(['profile', sessionStorage.getItem("userId")]).then(r => r);
   }
 }

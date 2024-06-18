@@ -49,7 +49,9 @@ export class ModalCoachPhoneConsComponent implements OnInit {
   phoneConsultationForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
-    coachName: new FormControl()
+    coachName: new FormControl(),
+    status: new FormControl("Ждет ответа"),
+    timeRegistration: new FormControl(new Date())
   })
 
   submitForm() {

@@ -37,6 +37,8 @@ export class ModalPhoneConsultationComponent {
   phoneConsultationForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
+    status: new FormControl("Ждет ответа"),
+    timeRegistration: new FormControl(new Date()),
   })
 
   submitForm() {

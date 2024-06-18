@@ -19,17 +19,19 @@ export class IsLoggedGuardService implements CanActivate {
 
   adminRole = false;
 
+  adminCheck() {
+    this.service.getUser(sessionStorage.getItem("userId")).subscribe(res => {
+      this.adminRole = res.role == "ADMIN";
+    })
+  }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     if (!this.service.isLoggedIn()) {
       this.router.navigate(['/sign-in']).then(r => r)
       return false;
     }
 
-    this.service.getUser(sessionStorage.getItem("userId")).subscribe(res => {
-      if (res.role == "ADMIN") {
-        this.adminRole = true;
-      }
-    })
+    this.adminCheck();
 
     return this.adminRole;
   }

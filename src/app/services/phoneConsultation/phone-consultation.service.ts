@@ -19,6 +19,6 @@ export class PhoneConsultationService {
   }
 
   public save(data: PhoneConsultation) {
-    return this.http.post(`${this.baseURL}`, data);
+    return this.http.post(`${this.baseURL}/sign-up`, data);
   }
 }
