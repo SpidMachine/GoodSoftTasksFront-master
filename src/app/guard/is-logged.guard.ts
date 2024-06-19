@@ -17,21 +17,21 @@ export class IsLoggedGuardService implements  CanActivate {
   constructor(private service: UserService, private router: Router) {
   }
 
-  adminRole = false;
 
-  adminCheck() {
-    this.service.getUser(sessionStorage.getItem("userId")).subscribe(res => {
-      this.adminRole = res.role == "ADMIN";
-    })
-  }
+  // adminCheck() {
+  //   let adminRole = false;
+  //
+  //   this.service.getUser(sessionStorage.getItem("userId")).subscribe(res => {
+  //     adminRole = res.role == "ADMIN";
+  //   })
+  //   return adminRole;
+  // }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     if (!this.service.isLoggedIn()) {
       this.router.navigate(['/sign-in']).then(r => r)
       return false;
     }
-
-    this.adminCheck();
 
     return true;
   }

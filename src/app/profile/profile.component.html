@@ -1,65 +1,152 @@
 <div class="container py-5">
   <div class="main-container">
     <div class="w-full">
-      <div class="surface-300 py-5 px-5 gap-5">
-        <ul class="list-none flex gap-5">
-          <li class="h-full surface-900"><a routerLink="" (click)="userProfile()" class=" text-2xl"><i>ПРОФИЛЬ</i></a>
-          </li>
-          <li><a routerLink="/prof/gym" class="h-full text-2xl"><i>ТРЕНАЖЕРНЫЙ ЗАЛ</i></a></li>
-        </ul>
+      <div class="surface-200 py-5 flex justify-content-between align-items-center">
+        <div>
+          <ul class="list-none flex gap-5">
+            <li class="h-full"><a routerLink="" (click)="userProfile()" class="text-500 text-2xl"><i>ПРОФИЛЬ</i></a>
+            </li>
+            <li><a routerLink="/prof/gym" class="h-full text-2xl"><i>ТРЕНАЖЕРНЫЙ ЗАЛ</i></a></li>
+          </ul>
+        </div>
+        <div class="mr-8">
+          <i class="text-3xl">{{ userObj?.phoneNumber }}</i>
+        </div>
       </div>
-      <div class="surface-50">
-        <div class="px-5 pt-8">
-          <p-table
-            #dt1
-            [value]="workouts$"
-            dataKey="id"
-            [rows]="10"
-            [rowsPerPageOptions]="[10, 25, 50]"
-            [paginator]="true"
-            [globalFilterFields]="['firstName', 'lastName', 'email', 'phoneNumber']"
-            [tableStyle]="{ 'min-width': '75rem' }"
-            class="table w-full">
-            <ng-template pTemplate="caption">
-              <div class="flex">
+      <div class="surface-300 flex">
+        <div class="px-5 py-8">
+          <div class="card">
+            <p-tabView [(activeIndex)]="activeIndex">
+              <p-tabPanel header="Неоплаченные занятия">
+                <p-table
+                  #dt1
+                  [value]="workouts$"
+                  dataKey="id"
+                  [rows]="4"
+                  [paginator]="true"
+                  [globalFilterFields]="['description', 'status', 'name', 'timeRegistration', 'coachId.name', 'coachId.place']"
+                  [tableStyle]="{ 'min-width': '50rem' }"
+                  styleClass="p-datatable-striped p-datatable-gridlines"
+                  class="table w-full">
+                  <ng-template pTemplate="caption">
+                    <div class="flex">
           <span class="p-input-icon-left ml-auto">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" [(ngModel)]="searchValue"
                        (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword"/>
             </span>
-              </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-              <tr>
-                <th>Ид</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Пароль</th>
-                <th>Почта</th>
-                <th>Пол</th>
-                <th>День рождения</th>
-                <th>Номер телефона</th>
-                <th>Роль</th>
-                <th>Действие</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-user>
-              <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>ЗАШИФРОВАН</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.gender }}</td>
-                <td>{{ user.birthday }}</td>
-                <td>{{ user.phoneNumber }}</td>
-                <td>{{ user.role }}</td>
-              </tr>
-            </ng-template>
-          </p-table>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Описание</th>
+                      <th>Тренер</th>
+                      <th>Время записи</th>
+                      <th>Статус</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-workout>
+                    @if (workout.status == "Ждет оплаты") {
+                      <tr class="text-xl">
+                        <td>{{ workout.description }}</td>
+                        <td>
+                          {{ workout.coachId.name }}<br>
+                          {{ workout.coachId.phoneNumber }}<br>
+                          {{ workout.coachId.specialization }}<br>
+                          {{ workout.coachId.place }}<br>
+                        </td>
+                        <td>{{ workout.timeRegistration | date : "yyyy-MM-dd HH:mm:ss" }}</td>
+                        @switch (workout.status) {
+                          @case ("Ждет оплаты") {
+                            <td class="bg-red-500 font-bold text-0 text-2xl">{{ workout.status }}
+                              <button (click)="payid(workout.id)">Оплатить</button>
+                            </td>
+                          }
+                          @case ("Оплачено") {
+                            <td class="bg-green-500 font-bold text-0 text-2xl">{{ workout.status }}</td>
+                          }
+                          @default {
+                            <td>{{ workout.status }}</td>
+                          }
+                        }
+                      </tr>
+                    }
+                  </ng-template>
+                </p-table>
+              </p-tabPanel>
+              <p-tabPanel header="Оплаченные занятия">
+                <p-table
+                  #dt2
+                  [value]="workouts$"
+                  dataKey="id"
+                  [rows]="8"
+                  [paginator]="true"
+                  [globalFilterFields]="['description', 'status', 'name', 'timeRegistration', 'coachId.name', 'coachId.place']"
+                  [tableStyle]="{ 'min-width': '50rem' }"
+                  styleClass="p-datatable-striped p-datatable-gridlines"
+                  class="table w-full">
+                  <ng-template pTemplate="caption">
+                    <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                  <i class="pi pi-search"></i>
+                  <input pInputText type="text" [(ngModel)]="searchValue"
+                         (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+                         placeholder="Search keyword"/>
+                </span>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Описание</th>
+                      <th>Тренер</th>
+                      <th>Время записи</th>
+                      <th>Статус</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-workout>
+                    @if (workout.status == "Оплачено") {
+                      <tr class="text-xl">
+                        <td>{{ workout.description }}</td>
+                        <td>
+                          {{ workout.coachId.name }}<br>
+                          {{ workout.coachId.phoneNumber }}<br>
+                          {{ workout.coachId.specialization }}<br>
+                          {{ workout.coachId.place }}<br>
+                        </td>
+                        <td>{{ workout.timeRegistration | date : "yyyy-MM-dd HH:mm:ss" }}</td>
+                        @switch (workout.status) {
+                          @case ("Ждет оплаты") {
+                            <td class="bg-red-500 font-bold text-0 text-2xl">{{ workout.status }}</td>
+                          }
+                          @case ("Оплачено") {
+                            <td class="bg-green-500 font-bold text-0 text-2xl">{{ workout.status }}</td>
+                          }
+                          @default {
+                            <td>{{ workout.status }}</td>
+                          }
+                        }
+                      </tr>
+                    }
+                  </ng-template>
+                </p-table>
+              </p-tabPanel>
+              <p-tabPanel header="Header III">
+                <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                  deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                  provident, similique sunt in culpa
+                  qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est
+                  et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
+                  quo minus.
+                </p>
+              </p-tabPanel>
+            </p-tabView>
+          </div>
+
+
         </div>
 
-        <div>
+        <div class="w-full">
           <form class="form" [formGroup]="editUserForm">
             <i class="title my-5">Профиль</i>
             <label>
@@ -79,7 +166,8 @@
             </label>
 
             <label>
-              <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input" max="{{ date | date : 'yyyy-MM-dd' }}">
+              <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input"
+                     max="{{ date | date : 'yyyy-MM-dd' }}">
               <span>Дата рождения</span>
             </label>
 
@@ -91,11 +179,8 @@
               <span>Пол</span>
             </label>
 
-            <label>
-              <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text"
-                     class="input">
-              <span>Номер телефона</span>
-            </label>
+            <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="hidden"
+                   class="input text-500">
             <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
 
             <button class="submit" (click)="onSubmit(editUserForm.value.id)">Сохранить</button>

@@ -35,7 +35,6 @@ import {PhoneConsultationService} from "../services/phoneConsultation/phone-cons
 export class CoachesComponent implements OnInit {
   coaches!: any[];
   visible = false;
-  coachId?: number;
 
   constructor(
     private service: PhoneConsultationService,
@@ -58,19 +57,18 @@ export class CoachesComponent implements OnInit {
     timeRegistration: new FormControl(new Date())
   })
 
-  public showDialog(num: number) {
+  public showDialog(coachName: string) {
     this.visible = true;
-    this.coachId = num;
-    this.phoneConsultationForm.get("coachName")?.setValue(num);
+    this.phoneConsultationForm.get("coachName")?.setValue(coachName);
   }
 
   submitForm() {
     this.service.save(this.phoneConsultationForm.value).subscribe(res => {
       this.visible = false;
       this.messageService.add({
-        severity: 'error',
-        summary: 'Ошибка!',
-        detail: 'Пользователь с таким номером телефона не найден',
+        severity: 'success',
+        summary: 'Успешно!',
+        detail: 'Вы успешно записилась на коснультацию!',
         contentStyleClass: "pl-5"
       });
     })

@@ -52,9 +52,9 @@
           <td>{{ phoneCons.phoneNumber }}</td>
           <td>{{ phoneCons.coachName }}</td>
           @if (phoneCons.status == "Ждет ответа") {
-            <td class="bg-yellow-200">{{ phoneCons.status }}</td>
+            <td class="bg-yellow-200 flex justify-content-between">{{ phoneCons.status }}<button (click)="phoneCons.status = 'Ответ получен'">Перезвонить</button></td>
           } @else {
-            <td>{{ phoneCons.status }}</td>
+            <td class="bg-green-500">{{ phoneCons.status }}</td>
           }
           <td>{{ phoneCons.timeRegistration | date : "yyyy-MM-dd HH:mm:ss"}}</td>
         </tr>

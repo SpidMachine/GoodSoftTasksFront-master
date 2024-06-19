@@ -1,14 +1,75 @@
 <div class="container py-5">
   <div class="main-container">
     <div class="w-full">
-      <div class="surface-300 py-5 px-5 gap-5">
-        <ul class="list-none flex gap-5">
-          <li><a routerLink="" (click)="userProfile()" class=" text-2xl"><i>ПРОФИЛЬ</i></a></li>
-          <li class="h-full surface-900"><a routerLink="" (click)="userProfile()" class="h-full text-2xl"><i>ТРЕНАЖЕРНЫЙ ЗАЛ</i></a></li>
-        </ul>
+      <div class="surface-200 py-5 flex justify-content-between align-items-center">
+        <div>
+          <ul class="list-none flex gap-5">
+            <li><a routerLink="" (click)="userProfile()" class="text-2xl"><i>ПРОФИЛЬ</i></a>
+            </li>
+            <li class="h-full"><a routerLink="/prof/gym" class="text-500 text-2xl"><i>ТРЕНАЖЕРНЫЙ ЗАЛ</i></a></li>
+          </ul>
+        </div>
+        <div class="mr-8">
+          <i class="text-3xl">{{ userObj?.phoneNumber }}</i>
+        </div>
       </div>
       <div class="surface-50">
-
+        <div class="px-5 pt-8 grid">
+          @for (coach of coaches$; track coach.id) {
+            @if (coach.place == "Тренажерный зал") {
+              <div class="col-6 justify-content-center">
+                <div class="product-item shadow-8 flex align-items-center">
+                  <p-image
+                    src="http://localhost:8080/photo/{{ coach.photoUrl }}"
+                    alt="Image"
+                    height="250px"
+                    width="350px"
+                    styleClass="pl-3"
+                    [preview]="true"/>
+                  <div class="product-list w-full">
+                    <h3 class="text-3xl">{{ coach.name }}</h3>
+                    <i>{{ coach.phoneNumber }}</i><br>
+                    <i>{{ coach.email }}</i><br>
+                    <span class="text-2xl">{{ coach.specialization }}</span>
+                    <span class="price text-3xl">{{ coach.description }}</span>
+                    <span class="price text-xl">{{ coach.place }}</span>
+                    <div class="firstFocus-btn">
+                      <button
+                        (click)="fillDialog(coach, coach.description, coach.photoUrl, coach.name, coach.specialization, coach.place)"
+                        class="button">Записаться
+                      </button>
+                    </div>
+                    <p-dialog [draggable]="false"
+                              [resizable]="false" header="Запись к тренеру" [modal]="true"
+                              [(visible)]="visible"
+                              [style]="{ width: '38rem' }">
+                      <p-image
+                        src="http://localhost:8080/photo/{{ photoUrl }}"
+                        alt="Image"
+                        height="250px"
+                        width="350px"
+                        styleClass="pl-3"
+                        [preview]="false"/>
+                      <form class="form" [formGroup]="addWorkoutToProfileForm" (submit)="submitForm()">
+                        <i class="text-3xl font-bold text-color">{{ coachName }}</i>
+                        <span class="text-color text-2xl">{{ specialization }}</span>
+                        <span class="font-bold price text-3xl">{{ description }}</span>
+                        <span class="font-bold price text-5xl">{{ place }}</span>
+                        <input formControlName="coachId" name="coachId" type="hidden">
+                        <input formControlName="description" name="description" type="hidden">
+                        <p-button
+                          styleClass="submit my-2 cursor-pointer font-bold text-xl w-full flex justify-content-center bg-red-500"
+                          (click)="submitForm()" [disabled]="addWorkoutToProfileForm.invalid">Записаться
+                        </p-button>
+                      </form>
+                    </p-dialog>
+                    <p-toast life="20000" [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
+                  </div>
+                </div>
+              </div>
+            }
+          }
+        </div>
       </div>
     </div>
   </div>

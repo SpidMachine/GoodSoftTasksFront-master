@@ -17,6 +17,7 @@ import {MessageService} from "primeng/api";
 import {InputTextModule} from "primeng/inputtext";
 import {TableModule} from "primeng/table";
 import {DatePipe} from "@angular/common";
+import {WorkoutService} from "../services/workout/workout.service";
 
 @Component({
   selector: 'app-profile',
@@ -36,7 +37,7 @@ import {DatePipe} from "@angular/common";
     TableModule,
     DatePipe
   ],
-  providers: [UserService, CoachService, MessageService],
+  providers: [UserService, CoachService, MessageService, WorkoutService],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -48,26 +49,29 @@ export class ProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private coachService: CoachService,
     private messageService: MessageService,
-    )
-  {}
-
+    private workoutService: WorkoutService
+  ) {
+  }
 
   workouts$!: any[];
   searchValue: string | undefined;
-  activeIndex: number = 0;
   userId: string | null = '';
-  user!: any;
+  userObj!: any;
   coaches?: any[];
   date: Date = new Date();
+  activeIndex: number = 0;
 
   ngOnInit() {
-    this.coachService.getCoaches().subscribe(res => {
-      this.coaches = res;
+    this.workoutService.getWorkoutsByUserGymId(sessionStorage.getItem("userId")).subscribe(res => {
+      this.workouts$ = res;
+    })
+    this.userService.getUser(sessionStorage.getItem("userId")).subscribe(res => {
+      this.userObj = res;
     })
 
     this.activatedRoute.paramMap.subscribe((data) => {
       this.userId = data.get('id');
-      this.userService.getUser(this.userId).subscribe((res:any) => {
+      this.userService.getUser(this.userId).subscribe((res: any) => {
         this.editUserForm = new FormGroup({
           id: new FormControl(res.id),
           firstName: new FormControl(res.firstName),
@@ -93,9 +97,9 @@ export class ProfileComponent implements OnInit {
     phoneNumber: new FormControl('')
   })
 
-  onSubmit(id:number) {
+  onSubmit(id: number) {
     const obj = this.editUserForm.value;
-    this.userService.put(id, obj).subscribe((res:any) => {
+    this.userService.put(id, obj).subscribe((res: any) => {
       this.messageService.add({
         severity: 'success',
         summary: 'Сохранение!',
@@ -105,7 +109,28 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  payid(workoutId: string) {
+    this.workoutService.getWorkoutById(sessionStorage.getItem("userId")).subscribe(res => {
+      res.status = "Оплачено";
+      this.workoutService.updateWorkout(workoutId, res).subscribe(res => {
+        window.location.reload();
+      });
+    })
+  }
+
   userProfile() {
     this.router.navigate(['profile', sessionStorage.getItem("userId")]).then(r => r);
+  }
+
+  inputStyles = {
+    'background-color': '#333',
+    'color': '#fff',
+    'width': '100%',
+    'padding': '1% 2%',
+    'outline': '0',
+    'font-size': '25px',
+    'font-weight': 'bold',
+    'border': '1px solid rgba(105, 105, 105, 0.397)',
+    'border-radius': '10px',
   }
 }

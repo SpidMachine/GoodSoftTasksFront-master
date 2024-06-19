@@ -122,13 +122,17 @@ body {
   background-size: var(--s) calc(var(--s) * 0.577);
 }
 
-.p-tabview-nav {
-  display: block;
-  font-size: 30px;
-}
+/*.p-tabview-nav {*/
+/*  display: block;*/
+/*  font-size: 30px;*/
+/*}*/
 
 .p-tabview-panels {
-  width: 1100px;
+  width: 900px;
   display: flex;
   justify-content: center;
+}
+
+.p-datatable {
+  /*border: 1px solid black;*/
 }
