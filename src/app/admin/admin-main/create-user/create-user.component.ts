@@ -5,18 +5,21 @@ import {UserService} from "../../../services/user/user.service";
 import {Router, RouterLink} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {InputMaskModule} from "primeng/inputmask";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-create-user',
   standalone: true,
     imports: [
-        FormsModule, HttpClientModule, ReactiveFormsModule, RouterLink, InputMaskModule
+        FormsModule, HttpClientModule, ReactiveFormsModule, RouterLink, InputMaskModule, DatePipe
     ],
   providers: [UserService],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.css'
 })
 export class CreateUserComponent {
+  date: Date = new Date();
+
   createUserForm: FormGroup = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -24,7 +27,8 @@ export class CreateUserComponent {
     email: new FormControl(''),
     birthday: new FormControl(''),
     gender: new FormControl(''),
-    phoneNumber: new FormControl('')
+    phoneNumber: new FormControl(''),
+    role: new FormControl("USER")
   })
 
   constructor(private userService: UserService, private router: Router) {

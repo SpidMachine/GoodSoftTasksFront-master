@@ -25,7 +25,7 @@
     </label>
 
     <label>
-      <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input">
+      <input formControlName="birthday" name="birthday" required="" placeholder="" type="date" class="input" max="{{ date | date : 'yyyy-MM-dd' }}">
       <span>Дата рождения</span>
     </label>
 

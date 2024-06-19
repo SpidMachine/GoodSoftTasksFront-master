@@ -3,15 +3,17 @@ import {PaginatorModule} from "primeng/paginator";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-edit-user',
   standalone: true,
-    imports: [
-        PaginatorModule,
-        ReactiveFormsModule,
-        RouterLink
-    ],
+  imports: [
+    PaginatorModule,
+    ReactiveFormsModule,
+    RouterLink,
+    DatePipe
+  ],
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.css'
 })
@@ -22,6 +24,7 @@ export class EditUserComponent implements OnInit {
     private activatedRoute: ActivatedRoute)
   {}
 
+  date: Date = new Date();
   userId: string | null = '';
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((data) => {

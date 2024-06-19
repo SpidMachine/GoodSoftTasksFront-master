@@ -13,7 +13,7 @@ import {UserService} from "../services/user/user.service";
 @Injectable({
   providedIn: 'root'
 })
-export class IsLoggedGuardService implements CanActivate {
+export class IsLoggedGuardService implements  CanActivate {
   constructor(private service: UserService, private router: Router) {
   }
 
@@ -33,6 +33,6 @@ export class IsLoggedGuardService implements CanActivate {
 
     this.adminCheck();
 
-    return this.adminRole;
+    return true;
   }
 }

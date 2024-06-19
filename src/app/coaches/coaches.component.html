@@ -17,7 +17,7 @@
               <span class="price text-3xl">{{ coach.description }}</span>
               <span class="price text-xl">{{ coach.place }}</span>
               <div class="firstFocus-btn">
-                <button (click)="showDialog()" class="button">Записаться</button>
+                <button (click)="showDialog(coach.name)" class="button">Записаться</button>
               </div>
               <p-dialog [draggable]="false"
                         [resizable]="false" header="Заполните заявку и мы с вами свяжемся!" [modal]="true" [(visible)]="visible"
@@ -25,7 +25,7 @@
                 <form class="form" [formGroup]="phoneConsultationForm" (submit)="submitForm()">
                   <input formControlName="status" name="status" type="hidden">
                   <label>
-                    <input formControlName="coachName" name="coachName" type="text">
+                    <input formControlName="coachName" name="coachName" type="hidden">
                   </label>
                   <label>
                     <input formControlName="name" name="name" required="" placeholder="Ваше имя" type="text"

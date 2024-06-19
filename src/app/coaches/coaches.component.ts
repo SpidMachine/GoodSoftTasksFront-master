@@ -35,7 +35,7 @@ import {PhoneConsultationService} from "../services/phoneConsultation/phone-cons
 export class CoachesComponent implements OnInit {
   coaches!: any[];
   visible = false;
-  nameOfCoach = "";
+  coachId?: number;
 
   constructor(
     private service: PhoneConsultationService,
@@ -50,16 +50,19 @@ export class CoachesComponent implements OnInit {
     })
   }
 
-  public showDialog() {
-    this.visible = true;
-  }
-
   phoneConsultationForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
-    coachName: new FormControl('asdd'),
-    status: new FormControl("Ждет ответа")
+    coachName: new FormControl(),
+    status: new FormControl("Ждет ответа"),
+    timeRegistration: new FormControl(new Date())
   })
+
+  public showDialog(num: number) {
+    this.visible = true;
+    this.coachId = num;
+    this.phoneConsultationForm.get("coachName")?.setValue(num);
+  }
 
   submitForm() {
     this.service.save(this.phoneConsultationForm.value).subscribe(res => {
