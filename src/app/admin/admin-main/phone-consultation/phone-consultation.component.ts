@@ -38,4 +38,13 @@ export class PhoneConsultationComponent implements OnInit {
       this.phoneConsultation$ = res;
     })
   }
+
+  called(phoneConsId: number) {
+    this.service.getPhoneConsultation(phoneConsId).subscribe(res => {
+      res.status = "Ответ получен";
+      this.service.updatePhoneConsultation(phoneConsId, res).subscribe(res => {
+        window.location.reload();
+      })
+    })
+  }
 }
