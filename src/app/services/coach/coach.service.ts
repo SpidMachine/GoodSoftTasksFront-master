@@ -31,8 +31,6 @@ export class CoachService {
   }
 
   public save(data: Coach): Observable<Coach> {
-    return this.http.post(`${this.baseURL}/add`, data, {headers: {
-        'Content-Type': 'multipart/form-data'
-      }});
+    return this.http.post(`${this.baseURL}/add`, data);
   }
 }

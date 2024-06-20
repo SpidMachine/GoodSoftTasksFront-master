@@ -4,6 +4,7 @@ import {InputMaskModule} from "primeng/inputmask";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {CoachService} from "../../../../services/coach/coach.service";
+import {Coach} from "../../../../domain/Coach";
 
 @Component({
   selector: 'app-coach-create-list',
@@ -60,9 +61,17 @@ export class CoachCreateListComponent implements OnInit {
   }
 
   onSubmit() {
-    const obj = this.createCoachForm.value;
-    this.coachService.save(obj).subscribe(res => {
-      this.toGoCoachList();
-    })
+    const obj: Coach = this.createCoachForm.value;
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile!!);
+    reader.onload = () => {
+      console.log(reader.result);
+      const res = reader.result as string;
+      // @ts-ignore
+      obj.photoBase64 = reader.result.substr(reader.result.indexOf(',') + 1);
+      this.coachService.save(obj).subscribe(res => {
+        this.toGoCoachList();
+      })
+    };
   }
 }

@@ -7,4 +7,6 @@ export class Coach {
   photoUrl?: string;
   place?: string;
   description?: string;
+  photoBase64?: string;
+  // photoFile?: ;
 }
