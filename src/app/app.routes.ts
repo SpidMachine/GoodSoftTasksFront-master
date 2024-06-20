@@ -12,6 +12,9 @@ import {PhoneConsultationComponent} from "./admin/admin-main/phone-consultation/
 import {UserListComponent} from "./admin/admin-main/user-list/user-list.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {GymSectionComponent} from "./profile/gym-section/gym-section.component";
+import {CoachListComponent} from "./admin/admin-main/coach-list/coach-list.component";
+import {CoachEditListComponent} from "./admin/admin-main/coach-list/coach-edit-list/coach-edit-list.component";
+import {CoachCreateListComponent} from "./admin/admin-main/coach-list/coach-create-list/coach-create-list.component";
 
 export const routes: Routes = [
     {
@@ -70,6 +73,18 @@ export const routes: Routes = [
     {
       path: "prof/gym",
       component: GymSectionComponent
-    }
+    },
+    {
+      path: "admin/coaches",
+      component: CoachListComponent
+    },
+    {
+      path: "admin/coaches/editCoach/:id",
+      component: CoachEditListComponent
+    },
+    {
+      path: "admin/coaches/createCoach",
+      component: CoachCreateListComponent
+    },
   ]
 ;

@@ -109,8 +109,8 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  payid(workoutId: string) {
-    this.workoutService.getWorkoutById(sessionStorage.getItem("userId")).subscribe(res => {
+  paid(workoutId: string) {
+    this.workoutService.getWorkoutById(workoutId).subscribe(res => {
       res.status = "Оплачено";
       this.workoutService.updateWorkout(workoutId, res).subscribe(res => {
         window.location.reload();

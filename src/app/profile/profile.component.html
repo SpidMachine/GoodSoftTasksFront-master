@@ -22,7 +22,7 @@
                   #dt1
                   [value]="workouts$"
                   dataKey="id"
-                  [rows]="4"
+                  [rows]="8"
                   [paginator]="true"
                   [globalFilterFields]="['description', 'status', 'name', 'timeRegistration', 'coachId.name', 'coachId.place']"
                   [tableStyle]="{ 'min-width': '50rem' }"
@@ -45,7 +45,7 @@
                       <th>Статус</th>
                     </tr>
                   </ng-template>
-                  <ng-template pTemplate="body" let-workout>
+                  <ng-template pTemplate="body" let-workout >
                     @if (workout.status == "Ждет оплаты") {
                       <tr class="text-xl">
                         <td>{{ workout.description }}</td>
@@ -59,7 +59,7 @@
                         @switch (workout.status) {
                           @case ("Ждет оплаты") {
                             <td class="bg-red-500 font-bold text-0 text-2xl">{{ workout.status }}
-                              <button (click)="payid(workout.id)">Оплатить</button>
+                              <button (click)="paid(workout.id)">Оплатить</button>
                             </td>
                           }
                           @case ("Оплачено") {
@@ -129,16 +129,6 @@
                     }
                   </ng-template>
                 </p-table>
-              </p-tabPanel>
-              <p-tabPanel header="Header III">
-                <p>
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                  deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-                  provident, similique sunt in culpa
-                  qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est
-                  et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                  quo minus.
-                </p>
               </p-tabPanel>
             </p-tabView>
           </div>

@@ -14,4 +14,10 @@ export class PhotoService {
   getPhoto(): Observable<Photo> {
     return this.http.get<Photo>(this.baseUrl);
   }
+
+  uploadPhoto(coachId: number, photo: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', photo);
+    return this.http.post(`${this.baseUrl}/${coachId}/photo`, formData);
+  }
 }

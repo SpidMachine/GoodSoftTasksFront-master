@@ -17,11 +17,11 @@ export class WorkoutService {
     return this.http.get<Workout[]>(`${this.baseURL}`);
   }
 
-  public getWorkoutsByUserGymId(id: string | null) {
+  public getWorkoutsByUserGymId(id: string | null): Observable<Workout[]> {
     return this.http.get<Workout[]>(`${this.baseURL}/profile/${id}`);
   }
 
-  public getWorkoutsByCoachId(id: string | null) {
+  public getWorkoutsByCoachId(id: string | null): Observable<Workout[]> {
     return this.http.get<Workout[]>(`${this.baseURL}/coach/${id}`);
   }
 

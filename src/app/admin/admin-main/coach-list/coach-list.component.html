@@ -17,18 +17,23 @@
         </a>
       </div>
     </div>
+    <div>
+      <a routerLink="/admin/coaches/createCoach" class="flex justify-content-center">
+        <button class="btn">Создать тренера</button>
+      </a>
+    </div>
   </div>
 </div>
 <div class="main-container">
   <div class="flex mt-8 w-auto justify-content-center">
     <p-table
       #dt1
-      [value]="phoneConsultation$"
+      [value]="coach$"
       dataKey="id"
       [rows]="10"
       [rowsPerPageOptions]="[10, 25, 50]"
       [paginator]="true"
-      [globalFilterFields]="['name', 'phoneNumber']"
+      [globalFilterFields]="['name', 'phoneNumber', 'description', 'email', 'specialization']"
       [tableStyle]="{ 'min-width': '75rem' }"
       class="table w-full">
       <ng-template pTemplate="caption">
@@ -45,26 +50,36 @@
           <th>Ид</th>
           <th>Имя</th>
           <th>Номер телефона</th>
-          <th>ФИО тренера</th>
-          <th>Статус</th>
-          <th>Время регистрации</th>
+          <th>Электронная почта</th>
+          <th>Описание</th>
+          <th>Место работы</th>
+          <th>Специальность</th>
+          <th>Фото</th>
+          <th>Действие</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-phoneCons>
+      <ng-template pTemplate="body" let-coach>
         <tr>
-          <td>{{ phoneCons.id }}</td>
-          <td>{{ phoneCons.name }}</td>
-          <td>{{ phoneCons.phoneNumber }}</td>
-          <td>{{ phoneCons.coachName }}</td>
-          @if (phoneCons.status == "Ждет ответа") {
-            <td class="bg-yellow-200 flex justify-content-between">{{ phoneCons.status }}<button (click)="called(phoneCons.id)">Перезвонить</button></td>
-          } @else {
-            <td class="bg-green-500">{{ phoneCons.status }}</td>
-          }
-          <td>{{ phoneCons.timeRegistration | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+          <td>{{ coach.id }}</td>
+          <td>{{ coach.name }}</td>
+          <td>{{ coach.phoneNumber }}</td>
+          <td>{{ coach.email }}</td>
+          <td>{{ coach.description }}</td>
+          <td>{{ coach.place }}</td>
+          <td>{{ coach.specialization }}</td>
+          <td class="text-center"><p-image
+            src="http://localhost:8080/photo/{{ coach.photoUrl }}"
+            alt="Image"
+            height="100px"
+            width="150px"
+            [preview]="true"/></td>
+
+          <td class="flex align-items-center justify-content-center" style="padding: 25% 25%">
+            <button class="btnEdit-userList" (click)="editCoach(coach.id)"><i class="pi pi-pen-to-square"></i></button>
+            <button class="btnDel-userList" (click)="deleteCoach(coach.id)"><i class="pi pi-trash font-bold"></i></button>
+          </td>
         </tr>
       </ng-template>
-      >
     </p-table>
   </div>
 </div>

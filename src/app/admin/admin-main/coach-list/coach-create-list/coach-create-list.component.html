@@ -1,0 +1,61 @@
+<div class="my-8">
+  <a routerLink="/admin/coaches" class="flex justify-content-center">
+    <button class="btn">Вернуться к списку тренеров</button>
+  </a>
+</div>
+<div class="flex justify-content-center my-8">
+  <form class="form" method="post" enctype="multipart/form-data" [formGroup]="createCoachForm">
+    <p class="title">Создать нового тренера</p>
+    <p class="message">Добавить тренера в базу данных</p>
+    <div class="flex">
+      <label>
+        <input formControlName="name" name="name" placeholder="" type="text" class="input">
+        <span>Имя</span>
+      </label>
+
+      <label>
+        <input formControlName="phoneNumber" name="phoneNumber" required="" placeholder="" type="text" class="input">
+        <span>Номер телефона</span>
+      </label>
+    </div>
+
+    <label>
+      <input formControlName="email" name="email" required="" placeholder="" type="email" class="input">
+      <span>Почта</span>
+    </label>
+
+    <label>
+      <input formControlName="description" name="description" required="" placeholder="" type="text" class="input">
+      <span>Описание</span>
+    </label>
+
+    <label>
+      <select formControlName="place" name="place" class="input">
+        <option>Тренажерный зал</option>
+        <option>Бассейн</option>
+      </select>
+      <span>Место работы</span>
+    </label>
+
+    <label>
+      <input formControlName="specialization" name="specialization" required="" placeholder="" type="text"
+             class="input">
+      <span>Специальность</span>
+    </label>
+
+    <label>
+      <input formControlName="photoUrl" type="file" name="file" class="input" (change)="onFileSelected($event)">
+    </label>
+
+<!--        <label>-->
+<!--          <select formControlName="photoUrl" name="photoUrl" class="input">-->
+<!--            @for (photo of photos; track photo) {-->
+<!--              <option>{{ photo }}</option>-->
+<!--            }-->
+<!--          </select>-->
+<!--          <span>Место работы</span>-->
+<!--        </label>-->
+
+    <button class="submit cursor-pointer" (click)="onSubmit()">Создать пользователя</button>
+  </form>
+</div>
