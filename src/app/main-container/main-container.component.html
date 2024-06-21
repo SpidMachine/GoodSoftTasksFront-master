@@ -87,7 +87,28 @@
             Отличная возможность познакомится с тренажерным залом и тренерами Тренажерного зала ВитГТК:
           </p>
         </div>
-        <app-modal-phone-consultation></app-modal-phone-consultation>
+        <div class="firstFocus-btn">
+          <button (click)="showDialog()" class="uppercase shadow-8 bg-red-400 border-1">Записаться на консультацию</button>
+        </div>
+        <p-dialog header="Заполните заявку и мы с вами свяжемся!" [modal]="true" [(visible)]="visible"
+                  [style]="{ width: '38rem' }">
+          <form class="form" [formGroup]="phoneConsultationForm" (submit)="submitForm()">
+            <label>
+              <input formControlName="name" name="name" required="" placeholder="Ваше имя" type="text" class="input">
+            </label>
+            <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
+                         name="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text" class="input"/>
+            <p-button class=""
+                      styleClass="submit cursor-pointer font-bold text-xl w-full flex justify-content-center bg-red-500"
+                      (click)="submitForm()" [disabled]="phoneConsultationForm.invalid">Отправить
+            </p-button>
+            <i><a
+              href="https://astral.ru/upload/iblock/f8f/4b2v4eld5of5dko2w68pb0o3wbne43zi/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B8%20%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BE%D1%82%2026.03.2021.pdf">ОФЕРТА</a>
+              на заключение соглашения о конфиденциальности и неразглашении информации
+            </i>
+          </form>
+        </p-dialog>
+        <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
       </div>
       <div class="col-5 flex align-items-center justify-content-center p-0">
         <img class="imgThirdFocus" src="assets/photo_2_1_1.png" alt="">
@@ -247,7 +268,28 @@
               с
               контролем углекислого газа, четырехступенчатая система фильтрации питьевой воды, чистые и комфортные
               раздевалки и душевые. И, конечно, опытные тренерский состав</p>
-            <app-modal-phone-consultation></app-modal-phone-consultation>
+            <div class="firstFocus-btn">
+              <button (click)="showDialog()" class="uppercase shadow-8 bg-red-400 border-1">Записаться на консультацию</button>
+            </div>
+            <p-dialog header="Заполните заявку и мы с вами свяжемся!" [modal]="true" [(visible)]="visible"
+                      [style]="{ width: '38rem' }">
+              <form class="form" [formGroup]="phoneConsultationForm" (submit)="submitForm()">
+                <label>
+                  <input formControlName="name" name="name" required="" placeholder="Ваше имя" type="text" class="input">
+                </label>
+                <p-inputMask variant="filled" mask="+375 (99) 999-99-99" [style]="inputStyles" formControlName="phoneNumber"
+                             name="phoneNumber" required="" placeholder="+375 (__) ___-__-__" type="text" class="input"/>
+                <p-button class=""
+                          styleClass="submit cursor-pointer font-bold text-xl w-full flex justify-content-center bg-red-500"
+                          (click)="submitForm()" [disabled]="phoneConsultationForm.invalid">Отправить
+                </p-button>
+                <i><a
+                  href="https://astral.ru/upload/iblock/f8f/4b2v4eld5of5dko2w68pb0o3wbne43zi/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B8%20%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BE%D1%82%2026.03.2021.pdf">ОФЕРТА</a>
+                  на заключение соглашения о конфиденциальности и неразглашении информации
+                </i>
+              </form>
+            </p-dialog>
+            <p-toast [breakpoints]="{ '900px': { width: '90%', right: '15px', left: '15px' } }"/>
           </div>
         </div>
       </div>

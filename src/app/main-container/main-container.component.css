@@ -44,7 +44,7 @@
 .firstFocus-btn button::before {
   content: '';
   width: 0;
-  height: 500%;
+  height: 800%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -126,4 +126,20 @@
 
 .tb-gMap td {
   width: 50%;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 1% 2%;
+  outline: 0;
+  font-size: 25px;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  font-weight: bold;
 }
