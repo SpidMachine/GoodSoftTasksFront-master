@@ -20,7 +20,7 @@
               <div class="col-6 justify-content-center">
                 <div class="product-item shadow-8 flex align-items-center">
                   <p-image
-                    src="http://localhost:8080/photo/{{ coach.photoUrl }}"
+                    src="http://localhost:8080/photo/{{ coach.id }}"
                     alt="Image"
                     height="250px"
                     width="350px"
@@ -35,7 +35,7 @@
                     <span class="price text-xl">{{ coach.place }}</span>
                     <div class="firstFocus-btn">
                       <button
-                        (click)="fillDialog(coach, coach.description, coach.photoUrl, coach.name, coach.specialization, coach.place)"
+                        (click)="fillDialog(coach, coach.description, coach.id, coach.name, coach.specialization, coach.place)"
                         class="button">Записаться
                       </button>
                     </div>
